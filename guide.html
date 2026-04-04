@@ -363,7 +363,10 @@
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="page-header">
-    <div class="header-tag">QUICK START GUIDE</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <div class="header-tag">QUICK START GUIDE</div>
+      <span style="background:var(--orange);color:white;font-size:9px;font-weight:700;padding:2px 9px;border-radius:20px;">01</span>
+    </div>
     <h1>営業支援AI 使い方ガイド</h1>
     <p>アポ登録・TDB追加・商談メモ・見積書作成を自動化。フォームに貼るだけ・ベタ書きOK。</p>
     <span class="ver">Ver. </span>
@@ -556,6 +559,23 @@ kintone使ってる、屋根工事メイン</div>
   <div class="tip">
     <strong>💡 POINT:</strong> 売上は「1億5千万」→「1,500百万」に自動変換。アポ取得者名は@Slack IDに自動変換されます。
   </div>
+  <div class="trigger-box" style="margin-top:7px;">
+    <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
+    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 事前情報フォーム【アポ】
+会社名：
+売上：
+従業員数：
+工種：
+初回商談日：
+時間：
+銀行名：
+支店名：
+銀行担当者（名前・電話番号）：
+アポ取得者：
+FS担当：
+HP：
+備考：</div>
+  </div>
 
   <!-- TDB -->
   <div class="sec-title" style="margin-top: 14px;">
@@ -616,6 +636,11 @@ kintone使ってる、屋根工事メイン</div>
 
   <div class="tip">
     <strong>💡 POINT:</strong> 【アポ】→【TDB】の順に<strong>同じチャット</strong>で入力してください。カレンダー予定を自動で紐付けて更新します。
+  </div>
+  <div class="trigger-box" style="margin-top:7px;">
+    <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
+    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 事前情報フォーム【TDB】
+会社名：</div>
   </div>
 </div>
 
@@ -751,6 +776,22 @@ kintone使ってる、屋根工事メイン</div>
 
   <div class="tip" style="margin-top: 6px;">
     <strong>💡 POINT:</strong> 入力フォームは<a href="商談入力フォーム（初回）.pdf" style="color: #c07000;">商談入力フォーム（初回）.pdf</a> を印刷して商談中にメモしてください。その後このチャットに貼り付けるだけです。
+  </div>
+  <div class="trigger-box" style="margin-top:7px;">
+    <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
+    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 商談入力フォーム（初回）
+
+【会社名】
+○○株式会社
+
+【書類】
+（名刺・会社案内等の写真を添付）
+
+【人物・現地情報】
+（社長の印象・温度感・事務所の雰囲気など）
+
+【録音】
+（iPhoneの文字起こしをそのまま貼り付け）</div>
   </div>
 </div>
 
@@ -892,6 +933,25 @@ kintone使ってる、屋根工事メイン</div>
   <div class="tip" style="margin-top: 6px;">
     <strong>💡 POINT:</strong> 3回目以降も同じフォーム（2回目以降）を使用します。チャット名は「（3回目）」「（4回目）」と更新してください。
   </div>
+  <div class="trigger-box" style="margin-top:7px;">
+    <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
+    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 商談入力フォーム（2回目以降）
+
+【会社名】
+○○株式会社
+
+【書類】
+（追加資料があれば添付）
+
+【前回からの進捗・変化】
+（前回後の動き・気持ちの変化・予算確保の有無など）
+
+【人物・現地情報】
+（今回の温度感・前回からの態度変化など）
+
+【今回の録音】
+（今回の商談の文字起こしをそのまま貼り付け）</div>
+  </div>
 </div>
 
 
@@ -1009,16 +1069,11 @@ kintone使ってる、屋根工事メイン</div>
       </div>
     </div>
   </div>
-</div>
 
-
-<!-- ══════════════════════════════════════════
-     ページ 6 ｜ カレンダー / Sheets / @変換 / 注意事項
-══════════════════════════════════════════ -->
-<div class="page">
-  <div class="sub-header">
-    <div class="page-num">06</div>
-    <h2>カレンダー & Sheets仕様 ／ @変換 ／ 注意事項</h2>
+  <!-- カレンダー / Sheets / @変換 / 注意事項（06統合） -->
+  <div class="sec-title" style="margin-top:14px;">
+    <div class="sec-num" style="background:var(--blue);">10</div>
+    <div class="sec-label">カレンダー &amp; Sheets仕様 ／ @変換 ／ 注意事項</div>
   </div>
 
   <div class="col2" style="gap: 8px;">

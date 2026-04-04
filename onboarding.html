@@ -234,7 +234,7 @@ function render(){
     return matchesSearch(r,terms);
   });
 
-  if(sort==="asc")results=[...results].reverse();
+  if(sort==="desc")results=[...results].reverse();
 
   const total=RAW.length;
   document.getElementById("stats").textContent=`${results.length}件 / 全${total}件`;
