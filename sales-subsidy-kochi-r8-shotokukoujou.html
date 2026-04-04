@@ -94,6 +94,7 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
     <div class="tab" onclick="switchTab('talk')">💬 説明ポイント</div>
     <div class="tab" onclick="switchTab('shotoku')">📄 所得向上</div>
     <div class="tab" onclick="switchTab('chingin')">📄 賃金向上</div>
+    <div class="tab" onclick="switchTab('guide')" style="background:#fff8e6;border-color:#f0d890;color:#8a6800">📖 使い方</div>
   </div>
 
   <!-- TAB1 試算シート -->
@@ -195,11 +196,12 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
               <tr><td class="rh">補助金</td><td style="text-align:right;color:var(--sub)">なし</td><td style="text-align:right;color:var(--gn)" id="c-s-cb">—</td><td style="text-align:right;color:var(--gn)" id="c-s-g">—</td></tr>
               <tr><td class="rh">申請代行費</td><td style="text-align:right;color:var(--sub)">なし</td><td style="text-align:right;color:var(--gn);font-weight:700">無料</td><td style="text-align:right;color:var(--red)" id="c-f-g">—</td></tr>
               <tr><td class="rh">月額（/ID）</td><td style="text-align:right;color:var(--sub)">3,000円</td><td style="text-align:right;color:var(--gn);font-weight:700">2,500円</td><td style="text-align:right;color:var(--sub)">3,000円</td></tr>
-              <tr style="background:var(--pale)"><td class="rh" style="font-weight:700">実質負担</td><td style="text-align:right;font-weight:700" id="c-b-n">—</td><td style="text-align:right;font-weight:700;color:var(--gn)" id="c-b-cb">—</td><td style="text-align:right;font-weight:700;color:var(--red)" id="c-b-g">—</td></tr>
+              <tr style="background:var(--pale)"><td class="rh" style="font-weight:700">実質負担</td><td style="text-align:right;font-weight:700" id="c-b-n">—</td><td style="text-align:right;font-weight:700" id="c-b-cb">—</td><td style="text-align:right;font-weight:700;color:var(--red)" id="c-b-g">—</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+      <div id="burden-alert" style="display:none;background:#fff0f0;border:1.5px solid var(--red);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#c0392b;gap:8px;align-items:flex-start;line-height:1.6"></div>
       <div class="sum-grid">
         <div class="s-card sub-accent"><div class="s-label">調整後 初期費用</div><div class="s-val" id="r-total">—</div><div class="s-sub">売値＋裁量調整＋月額差額</div></div>
         <div class="s-card accent"><div class="s-label">補助金額（2/3）</div><div class="s-val" id="r-subsidy">—</div><div class="s-sub">高知県から支給</div></div>
@@ -282,6 +284,156 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
       <div class="pdf-viewer" id="pdf-chingin" data-url="https://www.pref.kochi.lg.jp/doc/2026022500272/file_contents/file_2026413133942_1.pdf" style="padding:12px;text-align:center;color:#5a7a6a;min-height:200px">📄 読み込み中...</div>
     </div>
   </div>
+  <!-- TAB5: 使い方ガイド -->
+  <div class="panel" id="panel-guide">
+
+    <div class="card" style="border-left:3px solid #F5A623;background:#fff9ee">
+      <div class="card-title" style="color:#8a6800">📖 使い方ガイド</div>
+      <div style="font-size:12px;color:#5a4a00;line-height:1.8">
+        このツールは<strong>高知県 所得向上推進企業等総合支援事業費補助金</strong>を活用したCBO提案の試算と、クライアント向けご提案書の出力を行います。<br>
+        <span style="font-size:11px;opacity:.7">※ 社内専用ツールです。画面共有の際は必ずご提案書タブを使用してください。</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="card">
+      <div class="card-title">STEP 1 ／ 基本情報を入力する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">会社名</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">ご提案書に反映されます。入力するとご提案書のヘッダーに「○○株式会社 御中」と表示され、ダウンロード時のファイル名にも自動で入ります。</div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">売上規模</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">選ぶと社内価格テーブル（売値）が自動セットされます。<strong>売値は内部情報のためご提案書には表示されません。</strong></div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">ID数</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">クライアントの利用人数を選択。10ID以上・5ID刻みで選べます。月額と上乗せ計算に影響します。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="card">
+      <div class="card-title">STEP 2 ／ スライダーで初期費用を調整する</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:4px">① 売値の裁量調整</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">案件の規模・複雑さに応じて初期費用を0〜300万円の範囲で上乗せできます。<br>通常は触らずそのまま使用して構いません。</div>
+        </div>
+
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:4px">② 月額差額の上乗せ</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+            月額を3,000円→2,500円に値引きする分（500円×ID数）の<strong>3年36ヶ月分</strong>と、申請サポート費用の8割を自動計算してデフォルト値をセットします。<br><br>
+            <strong style="color:var(--gn)">なぜ初期に乗せるか</strong>：月額には補助金が出ません。初期費用に含めることで2/3の補助を受けられます。<br><br>
+            スライダーを上げすぎると<strong style="color:var(--red)">⚠️ 赤いアラートが表示</strong>されます。これはCBの実質負担が行政書士ルートを超えたサインです。必ずスライダーを下げてください。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="card">
+      <div class="card-title">STEP 3 ／ 比較表・グラフを確認する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+          <strong>上乗せ内訳表</strong>：デフォルト推奨値の計算根拠を表示。生値（四捨五入前）と丸め後の金額を確認できます。
+        </div>
+
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+          <strong>3パターン比較表</strong>：「補助金なし」「クラフトバンク」「行政書士」の実質負担を比較。クラフトバンクの実質負担が一番小さいことを確認してから提案へ進んでください。
+        </div>
+
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+          <strong>5年間グラフ</strong>：3本の折れ線で5年間の累計負担を比較。緑（CB）が一番下にあればOKです。
+        </div>
+
+        <div style="background:#fff0f0;border-radius:8px;padding:10px 14px;border:1px solid #f5c6c6">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px">⚠️ アラートが出た時</div>
+          <div style="font-size:12px;color:#c0392b;line-height:1.6">CBの実質負担が行政書士より高くなっています。②スライダーを左に動かして金額を下げてください。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="card">
+      <div class="card-title">STEP 4 ／ ご提案書を出力する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+          試算シートの一番下にある<strong style="color:#c0392b">赤いボタン「クライアント用 ご提案書 を出力する」</strong>を押します。
+        </div>
+
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+            ボタンを押すと2つのことが起きます：<br>
+            <strong>① HTMLファイルが自動ダウンロード</strong>（ファイル名に会社名・補助金名が入る）<br>
+            <strong>② ご提案書が別ウィンドウで開く</strong>（そのままPDF保存可能）
+          </div>
+        </div>
+
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+          別ウィンドウ右上の<strong>「📄 PDFで保存」</strong>ボタンを押すと印刷ダイアログが開きます。送信先を「PDFに保存」にしてください。
+        </div>
+
+        <div style="background:#fff0f0;border-radius:8px;padding:10px 14px;border:1px solid #f5c6c6">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px">⚠️ Safariでのご注意</div>
+          <div style="font-size:12px;color:#c0392b;line-height:1.6">SafariはBlobファイルのファイル名指定ができないためUUID名になります。<strong>ChromeでのPDF保存を推奨</strong>します。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+      <div class="card-title">よくある質問</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 所得向上・賃金向上タブのPDFが見られない</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. タブを開くと「PDFを開く」ボタンが表示されます。押すと高知県公式サイトのPDFが別タブで開きます。インターネット接続が必要です。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 月額差額が「38ヶ月」など変な数字になる</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. スライダーの値を10万刻みに丸めているため、逆算すると端数が出ます。上乗せ内訳の「月額差額（3年 36ヶ月分）」の金額が正しい基準です。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. ご提案書に売値（仕切値）は出る？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 出ません。ご提案書には「調整後初期費用（上乗せ込み）」のみ表示されます。売値・仕切値は試算シート（内部画面）にのみ表示されます。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 申請締切はいつ？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 1次募集：<strong>令和8年5月20日（水）17:00必着</strong>。事務局は4月20日（月）開設予定。月額SaaSが対象かどうかは4月20日以降に事務局へ確認を（088-823-9049）。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 行政書士より高くなった時は？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 赤いアラートが出ます。②スライダーを左に動かして調整してください。アラートが消えたら提案可能な水準です。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 他県の補助金でも使える？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. このファイルは高知県専用です。他県対応版は別途作成します（ファイル名: sales-subsidy-[県名]-[年度]-[補助金名].html）。</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 
 </div>
 <script>
@@ -292,7 +444,7 @@ const fmtM = n => Math.round(n/10000).toLocaleString() + '万円';
 const fmt  = n => Math.round(n).toLocaleString() + '円';
 
 function switchTab(t) {
-  const ids = ['calc','talk','shotoku','chingin'];
+  const ids = ['calc','talk','shotoku','chingin','guide'];
   document.querySelectorAll('.tab').forEach((el,i) => el.classList.toggle('active', ids[i]===t));
   ids.forEach(id => { const p=document.getElementById('panel-'+id); if(p) p.classList.toggle('active',id===t); });
 }
@@ -364,12 +516,22 @@ function calc(fromSlider) {
   document.getElementById('c-f-g').innerHTML    = '<span style="color:var(--red)">▼ '+fmtM(gyFee)+'</span>';
   document.getElementById('c-b-n').textContent  = fmtM(adjPrice);
   document.getElementById('c-b-cb').textContent = fmtM(burden);
+  document.getElementById('c-b-cb').style.color = burden > gyBurden ? 'var(--red)' : 'var(--gn)';
   document.getElementById('c-b-g').textContent  = fmtM(gyBurden);
 
   document.getElementById('r-total').textContent   = fmtM(totalInit);
   document.getElementById('r-subsidy').textContent = fmtM(subsidy);
   document.getElementById('r-burden').textContent  = fmtM(burden);
   document.getElementById('r-support').textContent = fmtM(supSave);
+
+  // ⚠️ CBが行書より高くなった時のアラート
+  const alertEl = document.getElementById('burden-alert');
+  if (burden > gyBurden) {
+    alertEl.style.display = 'flex';
+    alertEl.innerHTML = '⚠️ <strong>上乗せが多すぎます</strong>：クラフトバンクの実質負担（' + fmtM(burden) + '）が行政書士ルート（' + fmtM(gyBurden) + '）を超えています。スライダーを下げてください。';
+  } else {
+    alertEl.style.display = 'none';
+  }
 
   const months = Array.from({length:61},(_,i)=>i);
   const cbD = months.map(m => burden   + 2500*ids*m);
