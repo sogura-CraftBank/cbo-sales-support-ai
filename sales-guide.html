@@ -124,6 +124,7 @@ mark{background:#fde68a;border-radius:2px;padding:0 1px;color:inherit}
 
 <div class="nav" id="nav">
   <button class="nav-btn active" onclick="showSection('objection',this)">💬 反論切り返し</button>
+  <button class="nav-btn" onclick="showSection('skills',this)">🧠 営業スキル</button>
   <button class="nav-btn" onclick="showSection('failure',this)">⚠️ 失敗パターン</button>
   <button class="nav-btn" onclick="showSection('literacy',this)">📱 IT・スマホ対応</button>
   <button class="nav-btn" onclick="showSection('competitor',this)">🔄 競合比較</button>
@@ -145,6 +146,140 @@ mark{background:#fde68a;border-radius:2px;padding:0 1px;color:inherit}
   <div class="quick-tags" id="obj-tags"></div>
   <div style="font-size:11px;color:var(--gray);margin-bottom:8px">ヒット: <span id="obj-count"></span></div>
   <div id="obj-results"></div>
+
+</div>
+
+
+<!-- ━━━━━━━━━━━━━━━━━━
+     🧠 営業スキル（新規追加）
+━━━━━━━━━━━━━━━━━━ -->
+<div id="section-skills" class="section">
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🧠</span>小椋さん直伝 3つの営業スキル</div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:12px">商談の質を上げるコアスキル。毎回の振り返りに活用してください。</p>
+  </div>
+
+  <!-- なぜ×3 -->
+  <div class="card" style="border-left:4px solid var(--gn)">
+    <div class="card-title"><span class="icon">🔍</span>スキル① 「なぜ×3」</div>
+    <div class="talk-box">
+      <div class="label">💡 何をするか</div>
+      相手の発言に対して「なぜ？」を3回掘り下げる。表面的な反論の裏にある<strong>本当の課題</strong>を引き出す技術。
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 実例：「今は忙しいから」という反論</div>
+      <div class="step-list">
+        <div class="step"><div class="step-num" style="background:var(--lg);font-size:10px">Why1</div><div class="step-content"><div class="step-title">「なぜ今は忙しいですか？」</div><div class="step-desc">→「現場が3つ並行して動いていて」</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--lg);font-size:10px">Why2</div><div class="step-content"><div class="step-title">「なぜ3つ並行すると忙しくなるんですか？」</div><div class="step-desc">→「手配の確認と日報集計が追いつかない」</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--lg);font-size:10px">Why3</div><div class="step-content"><div class="step-title">「なぜ日報集計が追いつかないのですか？」</div><div class="step-desc">→「紙をExcelに転記しているから時間がかかる」</div></div></div>
+      </div>
+      <div class="objection-box" style="margin-top:8px">
+        <div class="label">⚡ ポイント</div>
+        「忙しい」の本当の原因は「転記作業の非効率」。これがわかれば「CBOならその転記がなくなります」と直撃できる。
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 振り返りチェック</div>
+      <div class="check-list">
+        <div class="check-item"><span class="ci">□</span><div>相手の最初の反論で止まらず、深掘りしたか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>「本当の困りごと」を言語化してもらえたか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>その困りごとに対してCBOの解決策を提示できたか？</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ペーシング -->
+  <div class="card" style="border-left:4px solid var(--ora)">
+    <div class="card-title"><span class="icon">🎯</span>スキル② ペーシング</div>
+    <div class="talk-box">
+      <div class="label">💡 何をするか</div>
+      相手の<strong>話す速さ・言葉遣い・トーン</strong>に意図的に合わせることで、無意識の信頼感（ラポール）を築く技術。
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 実践ポイント</div>
+      <div class="check-list">
+        <div class="check-item"><span class="ci">🗣</span><div><strong>話すスピードを合わせる</strong><br><span style="font-size:12px;color:var(--text2)">相手がゆっくり話す人なら自分もゆっくり。早口な人には少し速めに。</span></div></div>
+        <div class="check-item"><span class="ci">🗣</span><div><strong>相手の言葉を使う（オウム返し）</strong><br><span style="font-size:12px;color:var(--text2)">「月末が大変」→「月末が大変なんですね」と相手の言葉でそのまま返す。</span></div></div>
+        <div class="check-item"><span class="ci">🗣</span><div><strong>業界用語・方言に合わせる</strong><br><span style="font-size:12px;color:var(--text2)">「人工（にんく）」「出面（でずら）」など相手の使う言葉を使う。「外部の人間ではない」という安心感を作る。</span></div></div>
+        <div class="check-item"><span class="ci">🗣</span><div><strong>感情のトーンを合わせる</strong><br><span style="font-size:12px;color:var(--text2)">相手が困り顔で話しているときに明るく返さない。「それは確かに大変ですね」と共感を先に示す。</span></div></div>
+      </div>
+    </div>
+    <div class="objection-box" style="margin-top:10px">
+      <div class="label">⚡ NG例</div>
+      相手が「うちはまだそこまでじゃない」とゆっくり話しているのに「でもでも！CBOなら！」と前のめりに押す → 空回りして信頼を失う。
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 振り返りチェック</div>
+      <div class="check-list">
+        <div class="check-item"><span class="ci">□</span><div>相手のペースより速く話しすぎていなかったか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>相手の言葉をそのまま使えていたか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>共感→提案の順番を守れていたか？</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- イエス取り -->
+  <div class="card" style="border-left:4px solid #6b46c1">
+    <div class="card-title"><span class="icon">✅</span>スキル③ イエス取り（Yes取り）</div>
+    <div class="talk-box">
+      <div class="label">💡 何をするか</div>
+      相手が「YES」と言える小さな質問を積み重ねて、<strong>合意の流れ</strong>を作る技術。大きな「YES（契約）」の前に小さなYESを重ねる。
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 YES取りの流れ例</div>
+      <div class="step-list">
+        <div class="step"><div class="step-num" style="background:#6b46c1;font-size:9px">YES1</div><div class="step-content"><div class="step-title">現状確認のYES</div><div class="step-desc">「月末の集計、毎月大変じゃないですか？」→「そうですね」</div></div></div>
+        <div class="step"><div class="step-num" style="background:#6b46c1;font-size:9px">YES2</div><div class="step-content"><div class="step-title">課題の認識のYES</div><div class="step-desc">「それが半日で終わったら助かりますよね？」→「それはそうですね」</div></div></div>
+        <div class="step"><div class="step-num" style="background:#6b46c1;font-size:9px">YES3</div><div class="step-content"><div class="step-title">解決策のYES</div><div class="step-desc">「CBOだとその照合がボタン一つで終わるんですが、見てみますか？」→「見てみましょうか」</div></div></div>
+        <div class="step"><div class="step-num" style="background:#6b46c1;font-size:9px">YES4</div><div class="step-content"><div class="step-title">次のアクションのYES</div><div class="step-desc">「来週デモを30分だけ見ていただけますか？」→「いいですよ」</div></div></div>
+      </div>
+    </div>
+    <div class="objection-box" style="margin-top:8px">
+      <div class="label">⚡ ポイント</div>
+      YES取りは「誘導」ではなく「整理」。相手自身が「確かにそうだな」と気づく質問を積み重ねる。嘘をつかせるものではなく、相手の本音を引き出すもの。
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:6px">📋 振り返りチェック</div>
+      <div class="check-list">
+        <div class="check-item"><span class="ci">□</span><div>現状確認のYESを取れたか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>課題の認識で相手が自ら「そうですね」と言ったか？</div></div>
+        <div class="check-item"><span class="ci">□</span><div>次のアクション（デモ・見積・再訪）のYESを取れたか？</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 商談振り返りフォーム -->
+  <div class="card" style="background:var(--pale);border:1.5px solid var(--gn)">
+    <div class="card-title"><span class="icon">📝</span>商談後・自己振り返りチェック</div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">商談が終わったら、この3スキルで振り返ってみましょう。</p>
+
+    <div style="font-size:13px;font-weight:700;color:var(--dk);margin-bottom:8px">🔍 なぜ×3ができたか？</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <button class="qtag" id="why-yes" onclick="selectReview('why','yes',this)">✅ できた</button>
+      <button class="qtag" id="why-partial" onclick="selectReview('why','partial',this)">🟡 途中まで</button>
+      <button class="qtag" id="why-no" onclick="selectReview('why','no',this)">❌ できなかった</button>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--dk);margin-bottom:8px">🎯 ペーシングができたか？</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <button class="qtag" id="pace-yes" onclick="selectReview('pace','yes',this)">✅ できた</button>
+      <button class="qtag" id="pace-partial" onclick="selectReview('pace','partial',this)">🟡 途中まで</button>
+      <button class="qtag" id="pace-no" onclick="selectReview('pace','no',this)">❌ できなかった</button>
+    </div>
+
+    <div style="font-size:13px;font-weight:700;color:var(--dk);margin-bottom:8px">✅ イエス取りができたか？</div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="qtag" id="yes-yes" onclick="selectReview('yestori','yes',this)">✅ できた</button>
+      <button class="qtag" id="yes-partial" onclick="selectReview('yestori','partial',this)">🟡 途中まで</button>
+      <button class="qtag" id="yes-no" onclick="selectReview('yestori','no',this)">❌ できなかった</button>
+    </div>
+
+    <div id="review-feedback" style="display:none" class="talk-box">
+      <div class="label">💬 フィードバック</div>
+      <div id="review-feedback-text"></div>
+    </div>
+  </div>
 
 </div>
 
@@ -298,6 +433,80 @@ mark{background:#fde68a;border-radius:2px;padding:0 1px;color:inherit}
     </div>
   </div>
 
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔧</span>よく使われている積算・会計ソフトとCBOの棲み分け</div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">銀行経由の案件は「CBOを入れるかどうか」より「今のソフトとどう組み合わせるか」が課題。以下を参考に提案する。</p>
+    <div style="overflow-x:auto">
+      <table class="comp-table">
+        <tr><th>カテゴリ</th><th>ソフト名</th><th>主な用途</th><th>CBOとの棲み分け</th></tr>
+        <!-- 積算ソフト -->
+        <tr>
+          <td rowspan="4" style="background:#f0faf6;font-weight:700;font-size:12px;color:var(--gn)">積算ソフト</td>
+          <td><strong>楽王</strong><br><span style="font-size:10px;color:var(--gray)">建設業特化</span></td>
+          <td style="font-size:12px">見積積算・工事費計算</td>
+          <td class="cbo-win" style="font-size:12px">積算は楽王→現場管理・勤怠・原価はCBO。請求書もCBOに一本化できる</td>
+        </tr>
+        <tr>
+          <td><strong>デキスパート</strong><br><span style="font-size:10px;color:var(--gray)">積算/公共工事</span></td>
+          <td style="font-size:12px">公共工事の積算・設計書作成</td>
+          <td class="cbo-win" style="font-size:12px">公共工事の積算はデキスパート継続→社内管理・勤怠・日報はCBO</td>
+        </tr>
+        <tr>
+          <td><strong>ソウグウ積算</strong><br><span style="font-size:10px;color:var(--gray)">専門工事向け</span></td>
+          <td style="font-size:12px">専門工事の見積・積算</td>
+          <td class="cbo-win" style="font-size:12px">見積はソウグウ→案件管理・原価・請求書発行はCBOに移行</td>
+        </tr>
+        <tr>
+          <td><strong>ATLAS（アトラス）</strong><br><span style="font-size:10px;color:var(--gray)">積算・工事管理</span></td>
+          <td style="font-size:12px">積算・請求一体型</td>
+          <td class="cbo-win" style="font-size:12px">請求機能が被る場合はCBOに一本化も検討。勤怠・日報はCBOが強み</td>
+        </tr>
+        <!-- 会計ソフト -->
+        <tr>
+          <td rowspan="4" style="background:#fff8ec;font-weight:700;font-size:12px;color:var(--ora)">会計ソフト</td>
+          <td><strong>freee会計</strong><br><span style="font-size:10px;color:var(--gray)">クラウド会計</span></td>
+          <td style="font-size:12px">仕訳・確定申告・給与計算</td>
+          <td class="cbo-win" style="font-size:12px">会計・確定申告はfreee継続→工事原価・日報・勤怠はCBO。CSV連携で仕訳も可能</td>
+        </tr>
+        <tr>
+          <td><strong>マネーフォワード</strong><br><span style="font-size:10px;color:var(--gray)">クラウド会計</span></td>
+          <td style="font-size:12px">仕訳・請求・経費精算</td>
+          <td class="cbo-win" style="font-size:12px">財務会計はMF継続→工事管理・現場の日報・勤怠はCBO担当</td>
+        </tr>
+        <tr>
+          <td><strong>弥生会計</strong><br><span style="font-size:10px;color:var(--gray)">インストール型</span></td>
+          <td style="font-size:12px">仕訳・決算書</td>
+          <td class="cbo-win" style="font-size:12px">弥生は経理担当が使用継続→工事台帳・原価・出面管理をCBOで補完</td>
+        </tr>
+        <tr>
+          <td><strong>勘定奉行</strong><br><span style="font-size:10px;color:var(--gray)">中堅企業向け</span></td>
+          <td style="font-size:12px">仕訳・財務管理</td>
+          <td class="cbo-win" style="font-size:12px">会計は奉行継続→CBOは工事原価・現場管理の入口として活用</td>
+        </tr>
+        <!-- 給与ソフト -->
+        <tr>
+          <td rowspan="2" style="background:#f3f8f6;font-weight:700;font-size:12px;color:var(--gray)">給与ソフト</td>
+          <td><strong>freee人事労務</strong><br><span style="font-size:10px;color:var(--gray)">クラウド給与</span></td>
+          <td style="font-size:12px">給与計算・社保手続き</td>
+          <td class="cbo-win" style="font-size:12px">給与計算はfreee継続→CBOの勤怠データをCSVエクスポートしてfreeeに取込可能</td>
+        </tr>
+        <tr>
+          <td><strong>給与奉行・給与大臣</strong><br><span style="font-size:10px;color:var(--gray)">インストール型</span></td>
+          <td style="font-size:12px">給与計算・年末調整</td>
+          <td class="cbo-win" style="font-size:12px">給与計算は既存継続→CBOの勤怠データで打刻時間を集計し手動または連携で渡す</td>
+        </tr>
+      </table>
+    </div>
+    <div class="objection-box" style="margin-top:10px">
+      <div class="label">💡 提案のポイント</div>
+      <div style="font-size:12px;line-height:1.7">
+        「全部CBOに切り替える必要はない。今使っているソフトはそのまま使いつつ、<strong>CBOが空白を埋める</strong>形で入れましょう」という提案が受け入れられやすい。<br>
+        特に会計・積算は専門性が高く、移行コストが大きい。まず日報・勤怠・案件管理だけCBOで始め、慣れてきたら請求書・原価管理に拡張する流れが定着率◎。
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-title"><span class="icon">🔄</span>「今のツールがある」場合の移行戦略</div>
     <div class="step-list">
@@ -357,6 +566,40 @@ mark{background:#fde68a;border-radius:2px;padding:0 1px;color:inherit}
           ⚠️ つまずきポイント：紙との併用が続いて二重手間になる → 切り替え宣言を経営者に促す
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <!-- 高知県向け 初回内示書カード -->
+  <div class="card" style="border:2px solid #e53e3e;background:#fff5f5">
+    <div class="card-title" style="color:#c53030"><span class="icon">🎌</span>【高知限定】初回商談で内示書を取る</div>
+    <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:10px;border:1px solid #fed7d7">
+      <div style="font-size:12px;font-weight:700;color:#c53030;margin-bottom:4px">🎯 高知の目標設定</div>
+      <div style="font-size:13px;font-weight:700">初回訪問 → その日のうちに内示書回収</div>
+      <div style="font-size:12px;color:var(--text2);margin-top:4px">「次回また来ます」ではなく「今日決めてもらう」がスタンダード。補助金期限・決算タイミングを活用してクロージングまで持っていく。</div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;color:var(--dk);margin-bottom:8px">📋 高知初回商談の流れ（目安：90分）</div>
+    <div class="step-list">
+      <div class="step"><div class="step-num" style="background:#c53030;font-size:9px">0〜15分</div><div class="step-content"><div class="step-title">ペーシング・現状ヒアリング</div><div class="step-desc">社長の話をしっかり聞く。「なぜ×3」で本当の課題を引き出す。イエス取りで「確かに大変ですよね」を積み上げる。</div></div></div>
+      <div class="step"><div class="step-num" style="background:#c53030;font-size:9px">15〜40分</div><div class="step-content"><div class="step-title">CBO説明・ROI提示</div><div class="step-desc">課題に直結した機能だけ見せる（全機能説明しない）。「月末の集計○日 → 半日」「年間削減コスト○万円」を具体的数値で提示。</div></div></div>
+      <div class="step"><div class="step-num" style="background:#c53030;font-size:9px">40〜60分</div><div class="step-content"><div class="step-title">補助金・タイミングの打ち出し</div><div class="step-desc">高知県の補助金（所得向上推進企業等総合支援事業費補助金等）を提示。「申請期限が○月○日。今動けば補助金対象になります」と時間軸を作る。</div></div></div>
+      <div class="step"><div class="step-num" style="background:#c53030;font-size:9px">60〜80分</div><div class="step-content"><div class="step-title">見積・条件の合意</div><div class="step-desc">ID数・月額を確認してその場で数字を出す。「今月中に始めれば補助金に間に合います」「初期費用は銀行とご相談ください」と橋を渡す。</div></div></div>
+      <div class="step"><div class="step-num" style="background:#e53e3e;font-size:9px">80〜90分</div><div class="step-content"><div class="step-title">内示書・その場で回収</div><div class="step-desc">「では進める方向でお願いします」の一言を引き出す。内示書（または口頭確認）を取る。「次回また」で終わらない。</div></div></div>
+    </div>
+
+    <div class="objection-box" style="margin-top:10px;background:#fff5f5;border-left-color:#e53e3e">
+      <div class="label" style="color:#c53030">⚠️ よくある失敗パターン（高知）</div>
+      <div style="font-size:12px;line-height:1.7">
+        ❌ 「一度持ち帰って検討します」で終わる → 次回アポが取れない、熱が冷める<br>
+        ❌ 全機能を説明して相手が「難しそう」と感じる → 課題解決に直結した機能だけ見せる<br>
+        ❌ 補助金の説明が後回し → 最大の後押し材料。40〜60分に必ず出す
+      </div>
+    </div>
+
+    <div class="talk-box" style="margin-top:10px">
+      <div class="label">🗣 その場クロージングのトーク例</div>
+      「今日お話を聞いて、CBOで解決できる部分がはっきり見えました。補助金の申請期限も迫っているので、今月中にスタートを切りたいんですが、進める方向でいかがですか？細かい条件は後でいくらでも調整できます」
     </div>
   </div>
 
@@ -891,6 +1134,39 @@ function toggleAcc(trigger) {
   body.classList.toggle("open", !isOpen);
 }
 
+
+// ━━━ 振り返りチェック ━━━
+const reviewState = {};
+function selectReview(skill, val, btn) {
+  // 同じスキルの他ボタンのactiveを外す
+  ['yes','partial','no'].forEach(v => {
+    const el = document.getElementById(skill === 'why' ? `why-${v}` : skill === 'pace' ? `pace-${v}` : `yes-${v}`);
+    if (el) el.classList.remove('active');
+  });
+  btn.classList.add('active');
+  reviewState[skill] = val;
+
+  // 3つ全部選んだらフィードバック表示
+  if (reviewState['why'] && reviewState['pace'] && reviewState['yestori']) {
+    const scores = Object.values(reviewState);
+    const yesCount = scores.filter(s => s === 'yes').length;
+    const noCount = scores.filter(s => s === 'no').length;
+    let msg = '';
+    if (yesCount === 3) {
+      msg = '🎉 完璧です！3つのスキルをすべて実践できました。次の商談でも同じ流れを意識してください。この商談の「何が効いたか」を言語化してチームで共有しましょう。';
+    } else if (yesCount === 2) {
+      msg = '👍 あと一歩！2つはできています。できなかったスキルのカードを読み直して、次の商談で意識的に使ってみましょう。';
+    } else if (yesCount === 1 || scores.filter(s => s === 'partial').length >= 2) {
+      msg = '💪 意識はできています。「できた」が少ない原因を考えてみましょう。商談中に意識が飛んでしまうなら、事前に「今日はペーシングを意識する」と1つだけ決めて臨むのが効果的です。';
+    } else {
+      msg = '📚 まずスキルカードを読み直しましょう。次の商談前に「なぜ×3」だけを1つ意識してみてください。全部一度にやろうとしないことがコツです。';
+    }
+    const fb = document.getElementById('review-feedback');
+    document.getElementById('review-feedback-text').textContent = msg;
+    fb.style.display = 'block';
+  }
+}
+
 // ━━━ セクション切り替え ━━━
 function showSection(name, btn) {
   document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
@@ -902,6 +1178,7 @@ function showSection(name, btn) {
 
 // 初期描画
 renderObj("", "");
+
 </script>
 </body>
 </html>
