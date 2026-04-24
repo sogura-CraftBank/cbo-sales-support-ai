@@ -161,13 +161,12 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
   </div>
   <div class="tab-nav">
     <div class="tab-nav-logo">CraftBank office</div>
-    <button class="tab-btn active" onclick="switchTab('quote',this)">📄 御見積書ジェネレーター</button>
-    <button class="tab-btn" onclick="switchTab('sim',this)">💴 デジタル化・AI導入補助金</button>
+    <span style="color:rgba(255,255,255,.7);font-size:12px;font-weight:700;padding:0 18px">📄 御見積書ジェネレーター</span>
   </div>
 
 
 <!-- ===== 補助金シミュレーター ===== -->
-<div class="tab-content app-sim" id="tab-sim">
+<div class="tab-content app-sim" id="tab-sim" style="display:none">
 
   <div class="sim-header" style="margin-bottom:14px">
     <div class="badge">INTERNAL</div>
@@ -267,13 +266,13 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
       <tbody id="tb-own"></tbody>
       <tfoot><tr><td>実質負担</td><td class="r" id="tf-own">—</td></tr></tfoot></table>
     </div>
-    <div class="sec-lbl">内訳：デジタル化・AI導入補助金（スタンダード・15ID・月5万固定）</div>
+    <div class="sec-lbl">内訳：デジタル化・AI導入補助金（スタンダード・15ID・月5万）</div>
     <div class="card" style="padding:0;overflow:hidden">
       <table class="detail"><thead><tr><th>項目</th><th class="r">金額</th></tr></thead>
       <tbody id="tb-std"></tbody>
       <tfoot><tr><td>実質負担</td><td class="r" id="tf-std">—</td></tr></tfoot></table>
     </div>
-    <div class="sec-lbl">内訳：デジタル化・AI導入補助金（プロフェッショナル・30ID・月9万固定）</div>
+    <div class="sec-lbl">内訳：デジタル化・AI導入補助金（プロフェッショナル・30ID・月9万）</div>
     <div class="card" style="padding:0;overflow:hidden">
       <table class="detail"><thead><tr><th>項目</th><th class="r">金額</th></tr></thead>
       <tbody id="tb-pro"></tbody>
@@ -284,7 +283,7 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
 </div>
 
 <!-- ===== 見積書ジェネレーター ===== -->
-<div class="tab-content active" id="tab-quote">
+<div class="tab-content" id="tab-quote" style="display:block">
   <div class="app-quote" id="input-wrap">
     <div style="height:14px"></div>
 
@@ -475,11 +474,11 @@ function row(tb,lbl,val,cls=''){
   tb.appendChild(tr);
 }
 function calcOwn(init,monthly,tax){
-  const m2y=monthly*24,total=init+m2y,tSave=total*tax,real=total-tSave;
-  return{init,monthly,m2y,total,tSave,real};
+  const m1y=monthly*12,total=init+m1y,tSave=init*tax,real=total-tSave;
+  return{init,monthly,m1y,total,tSave,real};
 }
 function calcSub(init,subM,plan,tax){
-  const m2y=subM*24,total=init+m2y;
+  const m1y=subM*12,total=init+m1y;
   let iSub=0,iNote='';
   if(plan==='S'){
     if(init>=1000000&&init<=2000000){iSub=init*2/3;iNote='対象✅';}
@@ -492,10 +491,10 @@ function calcSub(init,subM,plan,tax){
     } else if(init<2000000)iNote='200万未満のため対象外❌';
     else iNote='300万超のため対象外❌';
   }
-  const mSub=m2y*2/3,totSub=iSub+mSub,deduct=total-totSub;
-  const tSave=total*tax,sTax=totSub*tax;
+  const mSub=m1y*2/3,totSub=iSub+mSub,deduct=total-totSub;
+  const tSave=init*tax,sTax=iSub*tax;
   const real=deduct-tSave+sTax;
-  return{init,subM,m2y,total,iSub,iNote,mSub,totSub,deduct,tSave,sTax,real};
+  return{init,subM,m1y,total,iSub,iNote,mSub,totSub,deduct,tSave,sTax,real};
 }
 function calc(){
   const ownIds=parseInt(document.getElementById('own-ids').value);
@@ -522,32 +521,32 @@ function calc(){
   });
   document.getElementById('cs-own-plan').textContent=`${ownIds}ID・月${(ownM/1000).toFixed(0)}万`;
   const to=document.getElementById('tb-own');to.innerHTML='';
-  row(to,`月額（${ownIds}ID × 24ヶ月）`,f(O.m2y));
+  row(to,`月額（${ownIds}ID × 12ヶ月）※通常経費`,f(O.m1y));
   row(to,'初期費用',f(O.init));
   row(to,'支払総額',f(O.total));
-  row(to,`節税効果（${(tax*100).toFixed(0)}%）`,`▲${f(O.tSave)}`,'row-sub');
+  row(to,`節税効果（初期費用 × ${(tax*100).toFixed(0)}%）`,`▲${f(O.tSave)}`,'row-sub');
   document.getElementById('tf-own').textContent=fM(O.real);
   const ts=document.getElementById('tb-std');ts.innerHTML='';
-  row(ts,'月額（50,000円 × 24ヶ月）',f(S.m2y));
+  row(ts,'月額（50,000円 × 12ヶ月）※通常経費',f(S.m1y));
   row(ts,'初期費用',f(S.init));
   row(ts,'支払総額',f(S.total));
   row(ts,'月額補助（2/3）',`▲${f(S.mSub)}`,'row-sub');
   row(ts,`初期費用補助（${S.iNote}）`,S.iSub>0?`▲${f(S.iSub)}`:'0円',S.iSub>0?'row-sub':'');
   row(ts,'補助金合計',`▲${f(S.totSub)}`,'row-sub');
   row(ts,'手出し',f(S.deduct));
-  row(ts,`節税効果（${(tax*100).toFixed(0)}%）`,`▲${f(S.tSave)}`,'row-sub');
-  row(ts,'補助金への課税',`+${f(S.sTax)}`,'row-tax');
+  row(ts,`節税効果（初期費用 × ${(tax*100).toFixed(0)}%）`,`▲${f(S.tSave)}`,'row-sub');
+  row(ts,'補助金への課税（初期費用補助分）',`+${f(S.sTax)}`,'row-tax');
   document.getElementById('tf-std').textContent=fM(S.real);
   const tp=document.getElementById('tb-pro');tp.innerHTML='';
-  row(tp,'月額（90,000円 × 24ヶ月）',f(P.m2y));
+  row(tp,'月額（90,000円 × 12ヶ月）※通常経費',f(P.m1y));
   row(tp,'初期費用',f(P.init));
   row(tp,'支払総額',f(P.total));
   row(tp,'月額補助（2/3）',`▲${f(P.mSub)}`,'row-sub');
   row(tp,`初期費用補助（${P.iNote}）`,P.iSub>0?`▲${f(P.iSub)}`:'0円',P.iSub>0?'row-sub':'');
   row(tp,'補助金合計',`▲${f(P.totSub)}`,'row-sub');
   row(tp,'手出し',f(P.deduct));
-  row(tp,`節税効果（${(tax*100).toFixed(0)}%）`,`▲${f(P.tSave)}`,'row-sub');
-  row(tp,'補助金への課税',`+${f(P.sTax)}`,'row-tax');
+  row(tp,`節税効果（初期費用 × ${(tax*100).toFixed(0)}%）`,`▲${f(P.tSave)}`,'row-sub');
+  row(tp,'補助金への課税（初期費用補助分）',`+${f(P.sTax)}`,'row-tax');
   document.getElementById('tf-pro').textContent=fM(P.real);
   const names=['自費','スタンダード（15ID）','プロフェッショナル（30ID）'];
   document.getElementById('c-main').textContent=`✅ ${names[bIdx]}が最もお得`;
