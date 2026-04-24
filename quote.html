@@ -11,7 +11,8 @@
 body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:var(--bg);color:var(--txt);font-size:13px}
 
 /* ===== タブナビゲーション ===== */
-.tab-nav-wrap{max-width:820px;margin:20px auto 0}
+.page-wrap{max-width:820px;margin:20px auto 0;padding:0 16px}
+.tab-nav-wrap{margin:0}
 .tab-bar{background:#c0392b;border-radius:10px 10px 0 0;padding:5px 16px;display:flex;align-items:center;justify-content:space-between}
 .tab-bar span{color:#fff;font-size:10px;font-weight:700;letter-spacing:.8px}
 .tab-nav{background:var(--dk);display:flex;align-items:center;padding:0 16px;border-radius:0 0 12px 12px;margin-bottom:16px}
@@ -19,8 +20,10 @@ body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:var(--bg);
 .tab-btn{padding:12px 18px;border:none;background:none;color:rgba(255,255,255,.55);font-size:12px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;white-space:nowrap}
 .tab-btn.active{color:#fff;border-bottom-color:var(--ora)}
 .tab-btn:hover{color:#fff}
-.tab-content{display:none;max-width:820px;margin:0 auto}
+.tab-content{display:none}
 .tab-content.active{display:block}
+.app-sim{padding:0 0 60px}
+.app-quote{padding:0 0 60px}
 
 /* ===== シミュレーター固有CSS ===== */
 .app-sim{padding:0 16px 60px}
@@ -93,7 +96,7 @@ table.detail tfoot td.r{text-align:right}
 .up-sub{font-size:10px;color:#aaa;margin-top:2px}
 
 /* ===== 見積ジェネレーター固有CSS ===== */
-.app-quote{max-width:680px;margin:0 auto;padding:0 16px 60px}
+.app-quote{padding:0 16px 60px}
 .app-quote .card h2{font-size:11px;font-weight:700;color:var(--gn);letter-spacing:.6px;text-transform:uppercase;margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--bd)}
 .app-quote .field{margin-bottom:12px}
 .app-quote .field label{display:block;font-size:11px;font-weight:700;color:#555;margin-bottom:4px}
@@ -153,6 +156,7 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
 </head>
 <body>
 
+<div class="page-wrap">
 <div class="tab-nav-wrap">
   <div class="tab-bar">
     <span>🔒 社内専用ツール — 画面共有時は提案書タブを使用してください</span>
@@ -160,7 +164,7 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
   <div class="tab-nav">
     <div class="tab-nav-logo">CraftBank office</div>
     <button class="tab-btn active" onclick="switchTab('quote',this)">📄 御見積書ジェネレーター</button>
-    <button class="tab-btn" onclick="switchTab('sim',this)">💴 デジタル化・AI導入補助金シミュレーター</button>
+    <button class="tab-btn" onclick="switchTab('sim',this)">💴 デジタル化・AI導入補助金</button>
   </div>
 </div>
 
@@ -382,7 +386,7 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
   </div>
 
   <!-- 見積書プレビュー -->
-  <div style="max-width:820px;margin:0 auto;padding:16px" id="preview-wrap">
+  <div style="padding:16px 0" id="preview-wrap">
     <div class="preview-actions">
       <h2>見積書プレビュー</h2>
       <button class="btn-back" onclick="back()">← 戻る</button>
@@ -742,5 +746,6 @@ function back(){
 }
 
 </script>
+</div><!-- /page-wrap -->
 </body>
 </html>
