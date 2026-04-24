@@ -11,17 +11,16 @@
 body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:var(--bg);color:var(--txt);font-size:13px}
 
 /* ===== タブナビゲーション ===== */
-.tab-nav{background:var(--dk);display:flex;align-items:center;padding:0 16px;max-width:820px;margin:0 auto;border-radius:12px 12px 0 0}
+.tab-nav-wrap{max-width:820px;margin:20px auto 0}
+.tab-bar{background:#c0392b;border-radius:10px 10px 0 0;padding:5px 16px;display:flex;align-items:center;justify-content:space-between}
+.tab-bar span{color:#fff;font-size:10px;font-weight:700;letter-spacing:.8px}
+.tab-nav{background:var(--dk);display:flex;align-items:center;padding:0 16px;border-radius:0 0 12px 12px;margin-bottom:16px}
 .tab-nav-logo{color:#fff;font-size:11px;font-weight:700;padding:10px 0;flex:1;opacity:.6}
 .tab-btn{padding:12px 18px;border:none;background:none;color:rgba(255,255,255,.55);font-size:12px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;font-family:inherit;white-space:nowrap}
 .tab-btn.active{color:#fff;border-bottom-color:var(--ora)}
 .tab-btn:hover{color:#fff}
 .tab-content{display:none;max-width:820px;margin:0 auto}
 .tab-content.active{display:block}
-
-/* ===== 内部ツールバー ===== */
-.internal-bar{background:#c0392b;padding:5px 16px;margin-bottom:14px;max-width:820px;margin-left:auto;margin-right:auto;border-radius:0 0 6px 6px}
-.internal-bar span{color:#fff;font-size:10px;font-weight:700;letter-spacing:.8px}
 
 /* ===== シミュレーター固有CSS ===== */
 .app-sim{padding:0 16px 60px}
@@ -154,13 +153,16 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
 </head>
 <body>
 
-<!-- タブナビ -->
-<div class="tab-nav">
-  <div class="tab-nav-logo">CraftBank office</div>
-  <button class="tab-btn active" onclick="switchTab('quote',this)">📄 御見積書ジェネレーター</button>
-  <button class="tab-btn" onclick="switchTab('sim',this)">💴 デジタル化・AI導入補助金シミュレーター</button>
+<div class="tab-nav-wrap">
+  <div class="tab-bar">
+    <span>🔒 社内専用ツール — 画面共有時は提案書タブを使用してください</span>
+  </div>
+  <div class="tab-nav">
+    <div class="tab-nav-logo">CraftBank office</div>
+    <button class="tab-btn active" onclick="switchTab('quote',this)">📄 御見積書ジェネレーター</button>
+    <button class="tab-btn" onclick="switchTab('sim',this)">💴 デジタル化・AI導入補助金シミュレーター</button>
+  </div>
 </div>
-<div class="internal-bar"><span>🔒 社内専用ツール — 画面共有時は提案書タブを使用してください</span></div>
 
 <!-- ===== 補助金シミュレーター ===== -->
 <div class="tab-content app-sim" id="tab-sim">
