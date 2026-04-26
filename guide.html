@@ -369,17 +369,17 @@
     </div>
     <h1>営業支援AI 使い方ガイド</h1>
     <p>アポ登録・TDB追加・商談メモ・見積書作成を自動化。フォームに貼るだけ・ベタ書きOK。</p>
-    <span class="ver">Ver. </span>
+    <span class="ver">Ver. 2.1 — 2026.04</span>
   </div>
 
-  <!-- 5つの使い方 -->
+  <!-- 6つの使い方 -->
   <div class="sec-title">
     <div class="sec-num">1</div>
-    <div class="sec-label">5つの使い方</div>
+    <div class="sec-label">6つの使い方</div>
     <div class="sec-sub">入力フォームの冒頭で自動判定</div>
   </div>
 
-  <div class="col5" style="margin-bottom: 10px;">
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:10px;">
     <div class="use-card">
       <div class="uc-head uc-apo">【アポ】</div>
       <div class="uc-body">アポ情報を登録<br>カレンダー＋Slack通知</div>
@@ -399,6 +399,10 @@
     <div class="use-card">
       <div class="uc-head uc-est">【見積】</div>
       <div class="uc-body">見積書ジェネレーター起動</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:#b71c1c;">補助金計算</div>
+      <div class="uc-body">自費 vs 補助金<br>シミュレーション</div>
     </div>
   </div>
 
@@ -495,11 +499,129 @@
 
 
 <!-- ══════════════════════════════════════════
-     ページ 2 ｜ アポ登録 & TDB
+     ページ 2 ｜ 入力フォーム（index.html）の使い方
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
     <div class="page-num">02</div>
+    <h2>入力フォームの使い方</h2>
+    <span class="hint">— sogura-craftbank.github.io/cbo-sales-support-ai/</span>
+  </div>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head">🔗 アクセス方法</div>
+    <div class="card-body" style="font-size:9.5px;">
+      <p style="margin-bottom:5px;">ブックマークまたは以下のURLを直接開く。</p>
+      <div style="background:#f5f5f2;border-radius:5px;padding:6px 10px;font-size:9px;font-family:monospace;word-break:break-all;">
+        https://sogura-craftbank.github.io/cbo-sales-support-ai/
+      </div>
+    </div>
+  </div>
+
+  <!-- 概要 -->
+  <div class="sec-title">
+    <div class="sec-num">1</div>
+    <div class="sec-label">フォームの概要</div>
+    <div class="sec-sub">入力してコピー → Claudeに貼り付けるだけ</div>
+  </div>
+
+  <div class="col2" style="gap:8px;margin-bottom:8px;">
+    <div class="card">
+      <div class="card-head">📋 4つのタブ</div>
+      <div class="card-body">
+        <ul class="step-list">
+          <li><div class="step-dot" style="background:var(--green-pale);border-color:var(--green-light);color:var(--green-dark);">📅</div><div class="step-content"><strong>アポ</strong>：会社情報・商談日程・リードソース・担当者・HP・備考</div></li>
+          <li><div class="step-dot" style="background:var(--green-pale);border-color:var(--green-light);color:var(--green-dark);">📊</div><div class="step-content"><strong>TDB</strong>：会社名のみ入力（与信PDF検索に使用）</div></li>
+          <li><div class="step-dot" style="background:#fff8ee;border-color:#f5c97a;color:#c07000;">🤝</div><div class="step-content"><strong>初回商談</strong>：会社名・書類添付・人物メモ・録音文字起こし</div></li>
+          <li><div class="step-dot" style="background:#e3f2fd;border-color:#90caf9;color:#1565C0;">🔄</div><div class="step-content"><strong>2回目以降</strong>：前回進捗・今回録音・温度感変化</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">✅ 基本の使い方（全タブ共通）</div>
+      <div class="card-body">
+        <ul class="step-list">
+          <li><div class="step-dot">1</div><div class="step-content">フォームのタブを選択</div></li>
+          <li><div class="step-dot">2</div><div class="step-content">各フィールドを入力</div></li>
+          <li><div class="step-dot">3</div><div class="step-content">画面下部の<strong>「📋 〇〇をコピー」</strong>ボタンをタップ</div></li>
+          <li><div class="step-dot">4</div><div class="step-content">Claudeのチャットに貼り付けて送信</div></li>
+        </ul>
+        <div class="tip" style="margin-top:6px;">
+          <strong>💡 POINT:</strong> コピー内容は下部の「コピー内容のプレビュー」で確認できます。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 各タブの詳細 -->
+  <div class="sec-title">
+    <div class="sec-num">2</div>
+    <div class="sec-label">各タブの入力項目</div>
+  </div>
+
+  <div class="col2" style="gap:8px;margin-bottom:8px;">
+
+    <!-- アポタブ -->
+    <div class="card">
+      <div class="card-head">📅 アポタブ</div>
+      <div class="card-body" style="font-size:9px;">
+        <table style="width:100%;border-collapse:collapse;">
+          <tr style="background:var(--green-pale);">
+            <th style="padding:3px 6px;border:1px solid var(--border);text-align:left;font-size:8.5px;">項目</th>
+            <th style="padding:3px 6px;border:1px solid var(--border);text-align:center;font-size:8.5px;">必須</th>
+            <th style="padding:3px 6px;border:1px solid var(--border);font-size:8.5px;">備考</th>
+          </tr>
+          <tr><td style="padding:2px 6px;border:1px solid var(--border);">会社名</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#e53e3e;">●</td><td style="padding:2px 6px;border:1px solid var(--border);">法人格を含める</td></tr>
+          <tr style="background:#fafafa;"><td style="padding:2px 6px;border:1px solid var(--border);">年商・従業員・工種</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#999;">任意</td><td style="padding:2px 6px;border:1px solid var(--border);">百万換算は自動</td></tr>
+          <tr><td style="padding:2px 6px;border:1px solid var(--border);">商談日・時間</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#e53e3e;">●</td><td style="padding:2px 6px;border:1px solid var(--border);">カレンダー自動登録に使用</td></tr>
+          <tr style="background:#fafafa;"><td style="padding:2px 6px;border:1px solid var(--border);">リードソース</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#999;">任意</td><td style="padding:2px 6px;border:1px solid var(--border);">銀行 / その他 を選択</td></tr>
+          <tr><td style="padding:2px 6px;border:1px solid var(--border);">アポ取得者</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#e53e3e;">●</td><td style="padding:2px 6px;border:1px solid var(--border);">プルダウンで選択 → @変換</td></tr>
+          <tr style="background:#fafafa;"><td style="padding:2px 6px;border:1px solid var(--border);">FS担当</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#999;">任意</td><td style="padding:2px 6px;border:1px solid var(--border);">未定でもOK</td></tr>
+          <tr><td style="padding:2px 6px;border:1px solid var(--border);">HP・備考</td><td style="padding:2px 6px;border:1px solid var(--border);text-align:center;color:#999;">任意</td><td style="padding:2px 6px;border:1px solid var(--border);">自由メモ</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 初回・2回目タブ -->
+    <div>
+      <div class="card" style="margin-bottom:7px;">
+        <div class="card-head orange">🤝 初回商談タブ</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">1</div><div class="step-content"><strong>会社名</strong>（必須）</div></li>
+            <li><div class="step-dot">2</div><div class="step-content"><strong>書類添付</strong>：タップして写真・PDFを選択。コピー後、Claudeの📎から同じファイルを添付してください</div></li>
+            <li><div class="step-dot">3</div><div class="step-content"><strong>人物メモ</strong>（任意）：未入力なら温度感分析をスキップ</div></li>
+            <li><div class="step-dot">4</div><div class="step-content"><strong>録音（文字起こし）</strong>（必須）：iPhoneの文字起こしをそのまま貼り付け</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head blue">🔄 2回目以降タブ</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">1</div><div class="step-content"><strong>会社名</strong>（必須）</div></li>
+            <li><div class="step-dot">2</div><div class="step-content"><strong>書類</strong>（追加資料があれば）</div></li>
+            <li><div class="step-dot">3</div><div class="step-content"><strong>前回からの進捗・変化</strong>：前回後の動き・気持ちの変化など</div></li>
+            <li><div class="step-dot">4</div><div class="step-content"><strong>人物メモ</strong>：今回の温度感・態度変化</div></li>
+            <li><div class="step-dot">5</div><div class="step-content"><strong>今回の録音（文字起こし）</strong>（必須）</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>⚠️ 書類添付の注意：</strong> 書類（名刺・会社案内等）はフォーム上でプレビューできますが、Claudeへのコピーにはファイルの中身は含まれません。コピー後にClaudeの <strong>📎（クリップ）ボタン</strong>から同じファイルを別途添付してください。
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ページ 3 ｜ アポ登録 & TDB
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="sub-header">
+    <div class="page-num">03</div>
     <h2>【アポ】アポ登録 ＋ 【TDB】与信情報追加</h2>
   </div>
 
@@ -548,7 +670,15 @@ kintone使ってる、屋根工事メイン</div>
             <div class="step-content"><strong>Slack差配通知を送信</strong><span class="badge badge-slack">Slack</span></div>
           </li>
           <li>
+            <div class="step-dot" style="background:#e8f5e9;border-color:#a5d6a7;color:#2e7d32;font-size:7px;width:22px;height:22px;">3-b</div>
+            <div class="step-content"><strong>IT補助金チェック → スレッド返信</strong>（高知県以外のみ）<span class="badge badge-new">自動</span></div>
+          </li>
+          <li>
             <div class="step-dot">4</div>
+            <div class="step-content"><strong>カレンダータスク作成</strong>「🙋 差配確認｜（会社名）」<span class="badge badge-auto">自動</span></div>
+          </li>
+          <li>
+            <div class="step-dot">5</div>
             <div class="step-content"><strong>スプレッドシート用データを出力</strong><span class="badge badge-manual">手動コピペ</span></div>
           </li>
         </ul>
@@ -558,6 +688,12 @@ kintone使ってる、屋根工事メイン</div>
 
   <div class="tip">
     <strong>💡 POINT:</strong> 売上は「1億5千万」→「1,500百万」に自動変換。アポ取得者名は@Slack IDに自動変換されます。
+  </div>
+  <div class="tip" style="margin-top:5px;border-left-color:#1565C0;background:#e3f2fd;">
+    <strong style="color:#1565C0;">🔍 IT補助金チェック（3-b）：</strong>高知県以外は差配Slackのスレッドに自動返信。プロジェクト内の過去採択リストで会社名を照合し、<strong>✅ 未掲載</strong> or <strong>⚠️ 掲載あり</strong>を1行で通知します。
+  </div>
+  <div class="tip" style="margin-top:5px;border-left-color:#6A1B9A;background:#f3e5f5;">
+    <strong style="color:#6A1B9A;">📅 カレンダータスク（4）：</strong>「🙋 差配確認｜（会社名）」タスクを初回商談日に自動作成。Slack URLをメモ欄に記録し、TDB処理時のスレッド返信に利用します。
   </div>
   <div class="trigger-box" style="margin-top:7px;">
     <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
@@ -615,6 +751,14 @@ HP：
           </li>
           <li>
             <div class="step-dot">4</div>
+            <div class="step-content"><strong>補助金スコア計算 → Slackスレッド返信</strong>（AJ〜AM列）<span class="badge badge-slack">Slack</span></div>
+          </li>
+          <li>
+            <div class="step-dot" style="background:#fce4ec;border-color:#f48fb1;color:#880e4f;font-size:8px;width:22px;height:22px;">高知</div>
+            <div class="step-content"><strong>高知県案件のみ：</strong>所得向上補助金シミュレーションをスレッドに追加返信</div>
+          </li>
+          <li>
+            <div class="step-dot">5</div>
             <div class="step-content"><strong>スプレッドシート用データを出力</strong><span class="badge badge-manual">手動コピペ</span></div>
           </li>
         </ul>
@@ -630,12 +774,21 @@ HP：
 <span class="h">*</span> 格付け：A
 <span class="h">*</span> 売上（千円）：1,234,567
 <span class="h">*</span> 利益（千円）：56,789
-<span class="h">*</span> 決算月：3月</div>
+<span class="h">*</span> 決算月：3月
+
+<span class="k">📊 補助金スコア結果</span>
+格付：A　売上：1,234,567千円　利益率：4.6%
+決算：3月　残11ヶ月　黒字
+🏷 AK：S1：選択提案　⚠️ AL：E0：リスクなし
+🎯 AM：M1：補助金申請伴走（事務局型）</div>
     </div>
   </div>
 
   <div class="tip">
     <strong>💡 POINT:</strong> 【アポ】→【TDB】の順に<strong>同じチャット</strong>で入力してください。カレンダー予定を自動で紐付けて更新します。
+  </div>
+  <div class="tip" style="margin-top:5px;border-left-color:#880e4f;background:#fce4ec;">
+    <strong style="color:#880e4f;">🏔 高知県案件：</strong>補助金スコアに続けて、<strong>所得向上推進企業等総合支援事業費補助金</strong>のシミュレーションが自動でスレッドに追加されます。
   </div>
   <div class="trigger-box" style="margin-top:7px;">
     <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
@@ -646,11 +799,11 @@ HP：
 
 
 <!-- ══════════════════════════════════════════
-     ページ 3 ｜ 商談入力フォーム（初回）
+     ページ 4 ｜ 商談入力フォーム（初回）
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
-    <div class="page-num">03</div>
+    <div class="page-num">04</div>
     <h2>商談入力フォーム（初回）</h2>
     <span class="hint">— 別チャットで使用してください</span>
   </div>
@@ -723,7 +876,7 @@ HP：
   <div class="sec-title">
     <div class="sec-num">6</div>
     <div class="sec-label">自動送信されるSlack通知</div>
-    <div class="sec-sub">#notify_done_sales_近畿中国四国（出力①〜④生成後に自動投稿）</div>
+    <div class="sec-sub">#notify_sales_中国_四国エリア（出力①〜④生成後に自動投稿）</div>
   </div>
 
   <div class="col2" style="gap: 8px;">
@@ -797,11 +950,11 @@ HP：
 
 
 <!-- ══════════════════════════════════════════
-     ページ 4 ｜ 商談入力フォーム（2回目以降）
+     ページ 5 ｜ 商談入力フォーム（2回目以降）
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
-    <div class="page-num">04</div>
+    <div class="page-num">05</div>
     <h2>商談入力フォーム（2回目以降）</h2>
     <span class="hint">— 同一会社の継続チャットまたは別チャットで使用</span>
   </div>
@@ -879,7 +1032,7 @@ HP：
   <div class="sec-title">
     <div class="sec-num">7</div>
     <div class="sec-label">自動送信されるSlack通知</div>
-    <div class="sec-sub">#notify_done_sales_近畿中国四国（出力⑤〜⑧生成後に自動投稿）</div>
+    <div class="sec-sub">#notify_sales_中国_四国エリア（出力⑤〜⑧生成後に自動投稿）</div>
   </div>
 
   <div class="col2" style="gap: 8px;">
@@ -956,11 +1109,11 @@ HP：
 
 
 <!-- ══════════════════════════════════════════
-     ページ 5 ｜ 見積書ジェネレーター
+     ページ 6 ｜ 見積書ジェネレーター
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
-    <div class="page-num">05</div>
+    <div class="page-num">06</div>
     <h2>見積書ジェネレーター</h2>
     <span class="hint">— 料金テーブルから自動計算</span>
   </div>
@@ -968,6 +1121,18 @@ HP：
   <div class="trigger-box">
     <div class="trigger-label">📌 トリガー（冒頭に必ず入れる）</div>
     <span class="trigger-code">## 見積</span>
+  </div>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head" style="background:#b71c1c;">🔒 社内専用ツールについて</div>
+    <div class="card-body" style="font-size:9.5px;">
+      <p style="margin-bottom:5px;">見積ジェネレーター・高知県補助金ツールの画面上部には以下の赤いバナーが表示されます：</p>
+      <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;display:flex;justify-content:space-between;align-items:center;">
+        <span>🔒 INTERNAL ONLY — 社内専用ツール</span>
+        <span style="opacity:.75;font-size:9px;">画面共有時は提案書タブを使用してください</span>
+      </div>
+      <p style="font-size:8.5px;color:var(--gray);margin-top:5px;">画面共有でお客様に見せる際は必ず「提案書」タブに切り替えてください。</p>
+    </div>
   </div>
 
   <div class="col2" style="gap: 8px;">
@@ -1094,19 +1259,19 @@ HP：
       </div>
 
       <div class="card">
-        <div class="card-head">📝 説明欄（TDB取得後に自動更新）</div>
+        <div class="card-head">📝 説明欄（空行なし・TDB取得後に自動更新）</div>
         <div class="card-body">
-          <div class="code-block">1,500百万/55名/建築板金工事
+          <div class="code-block">（銀行名）（支店名）集合/15:00 <span class="c">←支店集合時のみ1行目</span>
+1,500/55名/建築板金工事
 PD：
 HP：https://uedabk.co.jp/
-PDF：<span class="c">（TDB入力後に自動追記）</span>
-備考：kintone活用中/屋根工事メイン
-
-<span class="c">─── TDB取得後に追記 ───</span>
 格付け：A
 売上：1,234,567千円
 利益：56,789千円
-決算月：3月</div>
+決算月：3月
+PDF（売上・従業員数等）：（URL）
+備考：kintone活用中</div>
+          <p style="font-size:8px;color:#c00;margin-top:4px;font-weight:700;">⚠️ 各行の間に空行（改行2つ）を絶対に入れない</p>
         </div>
       </div>
     </div>
@@ -1130,7 +1295,9 @@ PDF：<span class="c">（TDB入力後に自動追記）</span>
         <div class="card-head mid">【TDB】記入列</div>
         <div class="card-body" style="font-size: 9px;">
           <strong>AB列:</strong> 格付け ／ <strong>AD列:</strong> 売上（千円） ／ <strong>AE列:</strong> 利益（千円）<br>
-          <strong>AH列:</strong> 決算月 ／ <strong>B列メモのPDF欄:</strong> PDFのURL
+          <strong>AH列:</strong> 決算月 ／ <strong>B列メモのPDF欄:</strong> PDFのURL<br>
+          <strong>AJ列:</strong> 補助金スコア ／ <strong>AK列:</strong> SUBSIDY_TYPE<br>
+          <strong>AL列:</strong> ETHICS_RISK ／ <strong>AM列:</strong> SALES_MOTION
         </div>
       </div>
 
@@ -1306,6 +1473,296 @@ PDF：<span class="c">（TDB入力後に自動追記）</span>
   </div>
 
 </div>
+
+
+<!-- ══════════════════════════════════════════
+     ページ 7 ｜ 補助金シミュレーション
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="sub-header">
+    <div class="page-num">07</div>
+    <h2>自費 vs デジタル化・AI導入補助金2026 シミュレーション</h2>
+    <span class="hint">— TDB PDFと一緒に送信</span>
+  </div>
+
+  <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+    🔒 INTERNAL ONLY — 社内専用ツール
+  </div>
+
+  <div class="trigger-box">
+    <div class="trigger-label">📌 トリガー（冒頭に必ず入れる）＋ TDB PDFを添付</div>
+    <span class="trigger-code">## 補助金シミュレーション【TDB】</span>
+  </div>
+
+  <div class="col2" style="gap: 8px; margin-bottom: 8px;">
+    <div>
+      <div class="sec-title" style="margin-top: 0;">
+        <div class="sec-num">S1</div>
+        <div class="sec-label">STEP 1–3：自動実行</div>
+      </div>
+      <div class="card">
+        <div class="card-head" style="background:#b71c1c;">🔄 自動処理の流れ</div>
+        <div class="card-body">
+          <ul class="step-list">
+            <li>
+              <div class="step-dot">1</div>
+              <div class="step-content"><strong>TDB PDFを読み取り</strong>：会社名・売上・利益・資本金・決算月を自動抽出</div>
+            </li>
+            <li>
+              <div class="step-dot">2</div>
+              <div class="step-content"><strong>自動計算</strong>：利益率・推定実効税率・決算残月数・警告条件</div>
+            </li>
+            <li>
+              <div class="step-dot">3</div>
+              <div class="step-content"><strong>営業情報を確認</strong>：AIが「ID数・初期費用（万円）を教えてください」と聞いてきます</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:0;">
+        <div class="card-head" style="background:#b71c1c;">📋 推定実効税率の根拠</div>
+        <div class="card-body">
+          <table style="width:100%;font-size:9px;border-collapse:collapse;">
+            <thead><tr style="background:var(--green-pale);">
+              <th style="padding:3px 5px;border:1px solid var(--border);">条件</th>
+              <th style="padding:3px 5px;border:1px solid var(--border);text-align:right;">税率</th>
+            </tr></thead>
+            <tbody>
+              <tr><td style="padding:2px 5px;border:1px solid var(--border);">資本金1億超</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">36%</td></tr>
+              <tr style="background:#fafafa;"><td style="padding:2px 5px;border:1px solid var(--border);">1億以下・利益800万超</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">34%</td></tr>
+              <tr><td style="padding:2px 5px;border:1px solid var(--border);">1億以下・利益800万以下</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">24%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tip" style="margin-top:6px;">
+        <strong>⚠️ 警告条件：</strong><br>
+        利益率10%超 → 「役員報酬等で実態と乖離の可能性あり」<br>
+        決算残月3以下 → 「採択まで4〜6ヶ月かかるためスケジュール要確認」
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title" style="margin-top: 0;">
+        <div class="sec-num">S4</div>
+        <div class="sec-label">STEP 4–5：計算 → HTML出力</div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="background:#b71c1c;">💰 比較する4プラン</div>
+        <div class="card-body" style="font-size: 9px;">
+          <table style="width:100%;font-size:8.5px;border-collapse:collapse;">
+            <thead><tr style="background:var(--green-pale);">
+              <th style="padding:3px 4px;border:1px solid var(--border);">プラン</th>
+              <th style="padding:3px 4px;border:1px solid var(--border);">ID数</th>
+              <th style="padding:3px 4px;border:1px solid var(--border);text-align:right;">月額</th>
+              <th style="padding:3px 4px;border:1px solid var(--border);">払い方</th>
+            </tr></thead>
+            <tbody>
+              <tr><td style="padding:2px 4px;border:1px solid var(--border);">自費</td><td style="padding:2px 4px;border:1px solid var(--border);">入力値</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">料金テーブル</td><td style="padding:2px 4px;border:1px solid var(--border);">毎月払い</td></tr>
+              <tr style="background:#fafafa;"><td style="padding:2px 4px;border:1px solid var(--border);">補助金S</td><td style="padding:2px 4px;border:1px solid var(--border);">15ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">50,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
+              <tr><td style="padding:2px 4px;border:1px solid var(--border);">補助金P</td><td style="padding:2px 4px;border:1px solid var(--border);">30ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">90,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
+              <tr style="background:#fafafa;"><td style="padding:2px 4px;border:1px solid var(--border);">補助金E</td><td style="padding:2px 4px;border:1px solid var(--border);">45ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">135,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:8px;color:var(--gray);margin-top:4px;">補助率2/3・月額24ヶ月分一括交付・申請代行費20万（成功報酬）</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:0;">
+        <div class="card-head" style="background:#b71c1c;">🖥 HTMLウィジェットで出力</div>
+        <div class="card-body" style="font-size: 9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">①</div><div class="step-content">TDB読み取り結果カード（会社名・売上・利益率・決算月）</div></li>
+            <li><div class="step-dot">②</div><div class="step-content">推定実効税率（根拠付き）＋利益率10%超の場合は警告表示</div></li>
+            <li><div class="step-dot">③</div><div class="step-content">支払い方法の違い（自費=毎月 / 補助金=2年一括）</div></li>
+            <li><div class="step-dot">④</div><div class="step-content"><strong>実質負担サマリーカード × 4枚</strong>（最安に「最もお得」バッジ）</div></li>
+            <li><div class="step-dot">⑤</div><div class="step-content">各プラン内訳テーブル（節税・補助金課税・代行費を明示）</div></li>
+            <li><div class="step-dot">⑥</div><div class="step-content">結論 + 決算残月警告（残3ヶ月以内）</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip" style="margin-top:6px;border-left-color:#b71c1c;background:#fff5f5;">
+        <strong style="color:#b71c1c;">🔒 画面共有注意：</strong> 計算結果には仕切値・税率情報が含まれます。お客様への画面共有は行わないでください。
+      </div>
+    </div>
+  </div>
+
+  <div class="trigger-box" style="margin-top:7px;">
+    <div class="trigger-label">📋 入力例（コピペしてClaudeに貼り付け + TDB PDFを添付）</div>
+    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 補助金シミュレーション【TDB】
+（TDB PDFをここに添付）
+
+<span class="c">※ 「補助金計算して」「自費vs補助金」などの入力でも処理が始まります</span></div>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════════════════
+     ページ 8 ｜ 高知県補助金ツールの使い方
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="sub-header">
+    <div class="page-num">08</div>
+    <h2>高知県 補助金ツールの使い方</h2>
+    <span class="hint">— 所得向上推進企業等総合支援事業費補助金</span>
+  </div>
+
+  <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+    🔒 INTERNAL ONLY — 社内専用ツール　画面共有時は必ず「提案書」タブに切り替えること
+  </div>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head" style="background:#c62828;">🔗 アクセス方法</div>
+    <div class="card-body" style="font-size:9.5px;">
+      <p style="margin-bottom:5px;">入力フォームトップページの「🏔 高知県 補助金ツール」ボタン、またはURLを直接開く。</p>
+      <div style="background:#f5f5f2;border-radius:5px;padding:6px 10px;font-size:9px;font-family:monospace;word-break:break-all;">
+        https://sogura-craftbank.github.io/cbo-sales-support-ai/sales-subsidy-kochi-r8-shotokukoujou.html
+      </div>
+    </div>
+  </div>
+
+  <!-- 5タブ概要 -->
+  <div class="sec-title">
+    <div class="sec-num">1</div>
+    <div class="sec-label">5つのタブ構成</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:10px;">
+    <div class="use-card">
+      <div class="uc-head" style="background:var(--green-dark);">📊 試算シート</div>
+      <div class="uc-body">補助金額・自己負担を自動計算</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:var(--green-mid);">💬 説明ポイント</div>
+      <div class="uc-body">商談中に使うトークポイント</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:var(--blue);">📄 所得向上</div>
+      <div class="uc-body">提案書プレビュー（印刷用）</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:var(--blue);">📄 賃金向上</div>
+      <div class="uc-body">賃金向上補助の提案書</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:#8a6800;">📖 使い方</div>
+      <div class="uc-body">ツール内の操作ガイド</div>
+    </div>
+  </div>
+
+  <!-- STEPガイド -->
+  <div class="sec-title">
+    <div class="sec-num">2</div>
+    <div class="sec-label">操作手順（STEP 1〜4）</div>
+  </div>
+
+  <div class="col2" style="gap:8px;margin-bottom:8px;">
+    <div>
+      <div class="card" style="margin-bottom:7px;">
+        <div class="card-head" style="background:#c62828;">STEP 1 ／ 基本情報を入力</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">①</div><div class="step-content"><strong>会社名</strong>：ご提案書のヘッダーとファイル名に反映</div></li>
+            <li><div class="step-dot">②</div><div class="step-content"><strong>売上規模</strong>：選ぶと仕切値テーブルが自動セット（提案書には非表示）</div></li>
+            <li><div class="step-dot">③</div><div class="step-content"><strong>ID数</strong>：利用人数を選択（10ID〜5ID刻み）</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="background:#c62828;">STEP 2 ／ スライダーで初期費用を調整</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li>
+              <div class="step-dot">①</div>
+              <div class="step-content">
+                <strong>売値の裁量調整</strong>：案件の規模に応じて±0〜300万円。<br>
+                <span style="color:var(--gray);">通常は触らずそのままでOK</span>
+              </div>
+            </li>
+            <li>
+              <div class="step-dot">②</div>
+              <div class="step-content">
+                <strong>月額差額の上乗せ</strong>：月額500円×ID数×36ヶ月分を初期費用に加算し補助対象に含める。推奨値が自動セットされます。<br>
+                <span style="color:#c0392b;font-weight:700;">⚠️ 赤いアラートが出たらスライダーを下げること</span>
+              </div>
+            </li>
+          </ul>
+          <div style="background:#fff0f0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#c0392b;border:1px solid #f5c6c6;">
+            赤いアラート = CBの実質負担が行政書士ルートを超えた状態。②を左に動かして解消してください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="margin-bottom:7px;">
+        <div class="card-head" style="background:#c62828;">STEP 3 ／ 比較表・グラフで確認</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">📋</div><div class="step-content"><strong>上乗せ内訳表</strong>：デフォルト推奨値の計算根拠を確認</div></li>
+            <li><div class="step-dot">📊</div><div class="step-content"><strong>3パターン比較表</strong>：「補助金なし」「CB」「行政書士」の実質負担比較。<strong>CBが最安になっていることを確認してから提案へ</strong></div></li>
+            <li><div class="step-dot">📈</div><div class="step-content"><strong>5年間グラフ</strong>：緑（CB）が一番下ならOK</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="background:#c62828;">STEP 4 ／ ご提案書を出力</div>
+        <div class="card-body" style="font-size:9px;">
+          <ul class="step-list">
+            <li><div class="step-dot">1</div><div class="step-content">試算シート一番下の<strong style="color:#c0392b;">赤いボタン「クライアント用 ご提案書 を出力する」</strong>を押す</div></li>
+            <li><div class="step-dot">2</div><div class="step-content">HTMLファイルが自動ダウンロード ＋ 別ウィンドウで提案書が開く</div></li>
+            <li><div class="step-dot">3</div><div class="step-content">別ウィンドウ右上の<strong>「📄 PDFで保存」</strong>→ 印刷ダイアログ → 送信先「PDFに保存」</div></li>
+          </ul>
+          <div style="background:#fff0f0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#c0392b;border:1px solid #f5c6c6;">
+            ⚠️ SafariはUUID名になるためPDF保存は<strong>Chromeを推奨</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec-title">
+    <div class="sec-num">3</div>
+    <div class="sec-label">よくある質問</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head" style="background:#c62828;">❓ FAQ</div>
+    <div class="card-body" style="font-size:9px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 所得向上・賃金向上タブのPDFが見られない</div>
+          <div style="color:var(--gray);">A. 「PDFを開く」ボタンを押すと高知県公式サイトのPDFが別タブで開きます。インターネット接続が必要です。</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;">
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 月額差額が「38ヶ月」など変な数字になる</div>
+          <div style="color:var(--gray);">A. 10万刻みに丸めているため端数が出ます。「月額差額（3年 36ヶ月分）」の金額が正しい基準です。</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;">
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 売値・仕切値はご提案書に出る？</div>
+          <div style="color:var(--gray);">A. 出ません。試算シート（内部画面）にのみ表示されます。</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;">
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 申請締切はいつ？</div>
+          <div style="color:var(--gray);">A. 1次募集：<strong>令和8年5月20日（水）17:00必着</strong>。事務局TEL: 088-823-9049</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:8px;">
+          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 申請サポート費用は？</div>
+          <div style="color:var(--gray);">A. クラフトバンクは<strong>無料で対応</strong>（通常は補助金の20%）。所得向上補助金採択時点で契約。賃金向上は別途費用が発生します。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
