@@ -144,12 +144,14 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
 .validity{text-align:right;font-size:11px;color:#666;margin-top:8px}
 
 @media print{
-  .tab-nav,.internal-bar,.calc-btn,.pdf-btn,.upload-area,.tab-btn{display:none!important}
+  @page{margin:10mm;size:A4}
+  .tab-bar,.tab-nav,.internal-bar,.calc-btn,.pdf-btn,.upload-area,.tab-btn,.preview-actions{display:none!important}
   .result-section{display:block!important}
   #input-wrap{display:none!important}
   #preview-wrap{display:block!important}
-  .quote{border:none;padding:18px;max-width:none}
+  .quote{border:none;padding:18px;max-width:none;box-shadow:none}
   body{background:#fff}
+  .app{padding:0;max-width:none}
 }
 </style>
 </head>
