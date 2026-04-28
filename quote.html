@@ -144,25 +144,25 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
 .validity{text-align:right;font-size:11px;color:#666;margin-top:8px}
 
 @media print{
-  @page{margin:10mm;size:A4}
-  .tab-bar,.tab-nav,.internal-bar,.calc-btn,.pdf-btn,.upload-area,.tab-btn,.preview-actions{display:none!important}
+  @page{margin:10mm;size:A4;marks:none}
+  .tab-bar,.tab-nav,.internal-bar,.calc-btn,.pdf-btn,.upload-area,.tab-btn,.preview-actions,.no-print{display:none!important;visibility:hidden!important}
   .result-section{display:block!important}
   #input-wrap{display:none!important}
   #preview-wrap{display:block!important}
-  .quote{border:none;padding:18px;max-width:none;box-shadow:none}
-  body{background:#fff}
-  .app{padding:0;max-width:none}
+  .quote{border:none!important;padding:18px;max-width:none;box-shadow:none!important}
+  body{background:#fff!important}
+  .app{padding:0!important;max-width:none!important}
 }
 </style>
 </head>
 <body>
 
 <div class="app">
-  <div class="tab-bar" style="justify-content:space-between">
+  <div class="tab-bar no-print" style="justify-content:space-between">
     <span>🔒 INTERNAL ONLY — 社内専用ツール</span>
     <span style="opacity:.75;font-size:9px;">画面共有時は提案書タブを使用してください</span>
   </div>
-  <div class="tab-nav">
+  <div class="tab-nav no-print">
     <div class="tab-nav-logo">CraftBank office</div>
     <span style="color:rgba(255,255,255,.7);font-size:12px;font-weight:700;padding:0 18px">📄 御見積書ジェネレーター</span>
   </div>
