@@ -92,7 +92,8 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
   <div class="tabs">
     <div class="tab active" onclick="switchTab('calc')">📊 試算シート</div>
     <div class="tab" onclick="switchTab('talk')">💬 説明ポイント</div>
-    <div class="tab" onclick="switchTab('guide')" style="background:#fff8e6;border-color:#f0d890;color:#8a6800">📖 制度概要</div>
+    <div class="tab" onclick="switchTab('detail')">📋 補助金詳細</div>
+    <div class="tab" onclick="switchTab('guide')" style="background:#fff8e6;border-color:#f0d890;color:#8a6800">📖 使い方</div>
   </div>
 
   <!-- TAB1 試算シート -->
@@ -282,13 +283,13 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
     </div>
   </div>
   <!-- TAB5: 使い方ガイド -->
-  <div class="panel" id="panel-guide">
+  <!-- TAB3 補助金詳細 -->
+  <div class="panel" id="panel-detail">
 
     <div class="card" style="border-left:3px solid #1a4a7a;background:#e8f0f8">
-      <div class="card-title" style="color:#1a4a7a">📖 制度概要</div>
+      <div class="card-title" style="color:#1a4a7a">📋 補助金詳細</div>
       <div style="font-size:12px;color:#1a2a4a;line-height:1.8">
-        このツールは<strong>岡山県 デジタル化による生産性向上等支援補助金</strong>を活用したCBO提案の試算と、クライアント向けご提案書の出力を行います。<br>
-        <span style="font-size:11px;opacity:.7">※ 社内専用ツールです。画面共有の際は必ずご提案書タブを使用してください。</span>
+        <strong>岡山県 デジタル化による生産性向上等支援補助金</strong>の制度概要です。
       </div>
     </div>
 
@@ -313,13 +314,9 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
       <div class="card-title">小規模事業者の基準（建設業）</div>
       <div style="background:#e8f8ee;border:2px solid #a0ddb4;border-radius:8px;padding:12px 14px;margin-bottom:10px">
         <div style="font-size:10px;font-weight:700;color:#1a7a42;margin-bottom:6px">✅ 建設業（このツールの判定基準）</div>
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <div>
-            <div style="font-size:15px;font-weight:700;color:#1a1a1a">従業員数 <span style="color:#1a7a42;font-size:18px">20名以下</span> → 小規模事業者（補助率 2/3）</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:12px;color:#555">21名以上 → 中小企業（補助率 1/2）</div>
-          </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+          <div style="font-size:14px;font-weight:700;color:#1a1a1a">従業員数 <span style="color:#1a7a42;font-size:17px">20名以下</span> → 小規模事業者（補助率 2/3）</div>
+          <div style="font-size:12px;color:#555">21名以上 → 中小企業（補助率 1/2）</div>
         </div>
       </div>
       <div style="font-size:10px;color:var(--sub);line-height:1.6">※ 中小企業基本法による定義。商業・サービス業は5名以下が小規模の基準です。建設業以外の場合は手動でご確認ください。</div>
@@ -332,8 +329,8 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
         <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">初期費用100万円超のため相見積もりが必要（業者選定理由書での代替可）</div></div>
         <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">コンサルティング費用は「カスタマイズ費」「研修費」等に内訳分解して見積書に記載</div></div>
         <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7"><strong>賃上げの義務規定はなし</strong>。ただし事業計画書で「生産性向上 → 賃上げ原資の確保」の論理が審査のポイント</div></div>
-        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">事前着手届を提出すると5/15以降の月額も対象になる可能性（採択後に事務局へ要確認）</div></div>
         <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">IT導入補助金との重複申請不可（どちらか一方を選択）</div></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">事前着手届を提出すると5/15以降の月額も対象になる可能性（採択後に事務局へ要確認）</div></div>
       </div>
     </div>
 
@@ -341,6 +338,133 @@ table.bd tfoot td{background:var(--gn);color:#fff;font-weight:700;padding:8px 10
       <strong>📞 問い合わせ先</strong><br>
       岡山県商工会連合会 事務局：TEL 086-237-4041（平日9〜12時、13〜17時）<br>
       E-mail：digital-hojo@okasci.or.jp
+    </div>
+
+  </div>
+
+  <!-- TAB4 使い方ガイド -->
+  <div class="panel" id="panel-guide">
+
+    <div class="card" style="border-left:3px solid #F5A623;background:#fff9ee">
+      <div class="card-title" style="color:#8a6800">📖 使い方ガイド</div>
+      <div style="font-size:12px;color:#5a4a00;line-height:1.8">
+        このツールは<strong>岡山県 デジタル化による生産性向上等支援補助金</strong>を活用したCBO提案の試算と、クライアント向けご提案書の出力を行います。<br>
+        <span style="font-size:11px;opacity:.7">※ 社内専用ツールです。画面共有の際は必ずご提案書タブを使用してください。</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="card">
+      <div class="card-title">STEP 1 ／ 基本情報を入力する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">会社名</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">ご提案書に反映されます。入力するとご提案書のヘッダーに「○○株式会社 御中」と表示され、ダウンロード時のファイル名にも自動で入ります。</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">売上規模</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">選ぶと社内価格テーブル（参考売値）が自動セットされます。<strong>売値は内部情報のためご提案書には表示されません。</strong></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div style="background:var(--gn);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;margin-top:1px">ID数</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">クライアントの利用人数を選択。10ID以上・5ID刻み（10〜100ID）。<strong>建設業は20名以下で小規模事業者（補助率2/3）、21名以上で中小企業（補助率1/2）</strong>が自動判定されます。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="card">
+      <div class="card-title">STEP 2 ／ スライダーで初期費用を調整する</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:4px">① 売値の裁量調整</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">案件の規模・複雑さに応じて初期費用を0〜300万円の範囲で上乗せできます。通常は触らずそのまま使用して構いません。</div>
+        </div>
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:4px">② 月額差額の上乗せ</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+            月額を3,000円→2,500円に値引きする分（500円×ID数）の<strong>3年36ヶ月分</strong>と、申請サポート費用の8割を自動計算してデフォルト値をセットします。<br><br>
+            <strong style="color:var(--gn)">なぜ初期に乗せるか</strong>：初期費用に含めることで補助金の対象になります。月額にそのまま乗せるよりお得です。<br><br>
+            スライダーを上げすぎると<strong style="color:var(--red)">⚠️ 赤いアラートが表示</strong>されます。CBの実質負担が行政書士ルートを超えたサインです。必ずスライダーを下げてください。
+          </div>
+        </div>
+        <div style="background:#fffbea;border-radius:8px;padding:10px 13px;border:1px solid #f0d060">
+          <div style="font-size:11px;font-weight:700;color:#7a5800;margin-bottom:3px">⚠️ 月額4ヶ月について</div>
+          <div style="font-size:12px;color:#5a4000;line-height:1.6">交付決定（令和8年9月上旬予定）〜12月末まで約4ヶ月が月額補助の対象目安。事前着手届で5/15以降も対象になる可能性あり（要事務局確認）。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="card">
+      <div class="card-title">STEP 3 ／ 比較表・グラフを確認する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)"><strong>上乗せ内訳表</strong>：デフォルト推奨値の計算根拠を表示。生値（四捨五入前）と丸め後の金額を確認できます。</div>
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)"><strong>3パターン比較表</strong>：「補助金なし」「クラフトバンク」「行政書士」の実質負担を比較。クラフトバンクの実質負担が一番小さいことを確認してから提案へ進んでください。</div>
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)"><strong>5年間グラフ</strong>：3本の折れ線で5年間の累計負担を比較。緑（CB）が一番下にあればOKです。</div>
+        <div style="background:#fff0f0;border-radius:8px;padding:10px 14px;border:1px solid #f5c6c6">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px">⚠️ アラートが出た時</div>
+          <div style="font-size:12px;color:#c0392b;line-height:1.6">CBの実質負担が行政書士より高くなっています。②スライダーを左に動かして金額を下げてください。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="card">
+      <div class="card-title">STEP 4 ／ ご提案書を出力する</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">試算シートの一番下にある<strong style="color:#c0392b">赤いボタン「クライアント用 ご提案書 を出力する」</strong>を押します。</div>
+        <div style="background:var(--pale);border-radius:8px;padding:12px 14px">
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">
+            ボタンを押すと2つのことが起きます：<br>
+            <strong>① HTMLファイルが自動ダウンロード</strong>（ファイル名に会社名・補助金名が入る）<br>
+            <strong>② ご提案書が別ウィンドウで開く</strong>（そのままPDF保存可能）
+          </div>
+        </div>
+        <div style="font-size:12px;line-height:1.7;color:var(--txt)">別ウィンドウ右上の<strong>「📄 PDFで保存」</strong>ボタンを押すと印刷ダイアログが開きます。送信先を「PDFに保存」にしてください。</div>
+        <div style="background:#fff0f0;border-radius:8px;padding:10px 14px;border:1px solid #f5c6c6">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px">⚠️ Safariでのご注意</div>
+          <div style="font-size:12px;color:#c0392b;line-height:1.6">SafariはBlobファイルのファイル名指定ができないためUUID名になります。<strong>ChromeでのPDF保存を推奨</strong>します。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+      <div class="card-title">よくある質問</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 月額差額が変な数字になる</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. スライダーの値を10万刻みに丸めているため、逆算すると端数が出ます。上乗せ内訳の「月額差額（3年 36ヶ月分）」の金額が正しい基準です。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. ご提案書に売値（参考売値）は出る？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 出ません。ご提案書には「調整後初期費用（上乗せ込み）」のみ表示されます。売値・仕切値は試算シート（内部画面）にのみ表示されます。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 申請締切はいつ？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. <strong>令和8年7月15日（火）17:00</strong>。申請受付開始は5月15日。Jグランツ（電子申請）のみで代理申請不可。<br>問い合わせ：岡山県商工会連合会 TEL 086-237-4041（平日9〜12時、13〜17時）</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 行政書士より高くなった時は？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 赤いアラートが出ます。②スライダーを左に動かして調整してください。アラートが消えたら提案可能な水準です。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. IT導入補助金と重複できる？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. できません。同一経費への重複申請は不可です。どちらを使うか事前に検討してください。</div>
+        </div>
+
+        <div style="border-top:1px solid var(--bd);padding-top:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--gn);margin-bottom:3px">Q. 岡山市内以外でも使える？</div>
+          <div style="font-size:12px;line-height:1.7;color:var(--txt)">A. 使えます。<strong>岡山県全域</strong>（総社市・倉敷市・津山市等すべて）が対象です。岡山県内に事業所があることが条件です。</div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -353,7 +477,7 @@ const fmtM = n => Math.round(n/10000).toLocaleString() + '万円';
 const fmt  = n => Math.round(n).toLocaleString() + '円';
 
 function switchTab(t) {
-  const ids = ['calc','talk','guide'];
+  const ids = ['calc','talk','detail','guide'];
   document.querySelectorAll('.tab').forEach((el,i) => el.classList.toggle('active', ids[i]===t));
   ids.forEach(id => { const p=document.getElementById('panel-'+id); if(p) p.classList.toggle('active',id===t); });
 }
