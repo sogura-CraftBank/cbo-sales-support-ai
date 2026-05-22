@@ -1319,6 +1319,8 @@ PDF（売上・従業員数等）：（URL）
             <div style="background: var(--green-pale); padding: 3px 5px; border-radius: 3px;"><strong>植村</strong> → @Nasa</div>
             <div style="background: var(--green-pale); padding: 3px 5px; border-radius: 3px;"><strong>山田</strong> → @Akane</div>
             <div style="background: var(--green-pale); padding: 3px 5px; border-radius: 3px;"><strong>中島</strong> → @Narimi</div>
+            <div style="background: var(--green-pale); padding: 3px 5px; border-radius: 3px;"><strong>森田</strong> → @Yuka</div>
+            <div style="background: var(--green-pale); padding: 3px 5px; border-radius: 3px;"><strong>二宮</strong> → @Hayato</div>
           </div>
           <p style="font-size: 8px; color: var(--gray); margin-top: 5px;">※姓・名・フルネーム・漢字どれで入力されても自動変換されます</p>
         </div>
@@ -1601,6 +1603,154 @@ PDF（売上・従業員数等）：（URL）
 </div>
 
 
+
+<!-- ══════════════════════════════════════════
+     ページ 09 ｜ 銀行・行員管理AIの使い方
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="sub-header">
+    <div class="page-num">09</div>
+    <h2>銀行・行員管理AIの使い方</h2>
+    <span class="hint">— Cowork（PC）で使用。支店接触ログ・行員情報を自動記録</span>
+  </div>
+
+  <div style="background:#1565C0;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+    💻 Cowork（Claude Desktop）専用 — スマホはSlack中継モードを使用
+  </div>
+
+  <!-- 2モード概要 -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:var(--blue);">1</div>
+    <div class="sec-label">2つのモード</div>
+    <div class="sec-sub">入力内容で自動判定・明示キーワードで強制切替</div>
+  </div>
+
+  <div class="col2" style="gap:8px;margin-bottom:10px;">
+    <div class="use-card" style="border:2px solid var(--blue);">
+      <div class="uc-head" style="background:var(--blue);">🏦 銀行モード（支店単位）</div>
+      <div class="uc-body" style="font-size:9px;line-height:1.7;">
+        <strong>対象：</strong>担当エリアの全銀行・信用金庫<br>
+        <strong>記録する情報：</strong><br>
+        ・挨拶 / 勉強会 / 個人特化（✅）<br>
+        ・予測（◎○△×）<br>
+        ・担当者名<br>
+        ・備考（personal / attack / 人員 / situation / relation）<br><br>
+        <strong>明示キーワード：</strong>「支店：」「銀行：」
+      </div>
+    </div>
+    <div class="use-card" style="border:2px solid #6A1B9A;">
+      <div class="uc-head" style="background:#6A1B9A;">👤 行員モード（個人単位）</div>
+      <div class="uc-body" style="font-size:9px;line-height:1.7;">
+        <strong>対象：</strong>高知銀行 / 百十四銀行 / 四国銀行 / 広島銀行（伊予西条・新居浜・松山のみ）<br>
+        <strong>記録する情報：</strong><br>
+        ・紹介意欲（◎○△×）<br>
+        ・直近メモ<br>
+        ・個人のpersonal<br>
+        ・接触ログ（日付・接触者・内容）<br><br>
+        <strong>明示キーワード：</strong>「行員：」
+      </div>
+    </div>
+  </div>
+
+  <!-- 処理フロー -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:var(--blue);">2</div>
+    <div class="sec-label">処理フロー（PCモード）</div>
+  </div>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head" style="background:var(--blue);">🔄 基本の流れ（音声入力 → 1行確認 → GAS送信）</div>
+    <div class="card-body" style="font-size:9px;">
+      <ul class="step-list">
+        <li><div class="step-dot">1</div><div class="step-content"><strong>音声入力</strong>：Coworkに話しかけるだけ。モードは自動判定</div></li>
+        <li><div class="step-dot">2</div><div class="step-content"><strong>1行確認</strong>：Claudeが内容を要約して「送る？」と確認。「はい」で送信</div></li>
+        <li><div class="step-dot">3</div><div class="step-content"><strong>Chrome経由でGAS送信</strong>：スプレッドシートに自動書き込み</div></li>
+        <li><div class="step-dot">4</div><div class="step-content"><strong>結果1行返却</strong>：「✅ 但馬信用金庫 本店 / row 2 更新完了」</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 入力例 -->
+  <div class="col2" style="gap:8px;margin-bottom:8px;">
+    <div>
+      <div class="card">
+        <div class="card-head" style="background:var(--blue);">🏦 銀行モード 入力例</div>
+        <div class="card-body" style="font-size:9px;">
+          <div class="code-block" style="font-size:8px;line-height:1.8;">但馬信用金庫の本店、勉強会やった。
+予測◎、担当小椋
+
+みなと銀行の小野支店、挨拶完了。
+personalはH2年、明石市在住、地元神河町
+
+広島銀行 新居浜、勉強会と個人特化☑、
+人員3人、situationは建設業少なめ商品◎</div>
+          <div style="margin-top:6px;font-size:8.5px;color:var(--gray);">
+            <strong>備考の5項目：</strong><br>
+            personal（個人情報）/ attack（営業攻略）<br>
+            人員（支店人数）/ situation（支店状況）<br>
+            relation（人脈情報）
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-head" style="background:#6A1B9A;">👤 行員モード 入力例</div>
+        <div class="card-body" style="font-size:9px;">
+          <div class="code-block" style="font-size:8px;line-height:1.8;">四国銀行の大西支店長に会った。
+紹介めちゃくちゃ前向きで◎
+
+百十四銀行高松支店の中村係長を
+先行登録して
+
+高知銀行の山本、安芸支店に
+異動になった</div>
+          <div style="margin-top:6px;font-size:8.5px;color:var(--gray);">
+            <strong>個人情報 → personal に自動分離：</strong><br>
+            「地元が」「趣味が」「家族が」などの<br>
+            発言は自動でpersonalフィールドへ
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- スマホモード -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:#e65100;">3</div>
+    <div class="sec-label">スマホモード（通常のClaude.aiアプリ）</div>
+  </div>
+
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head" style="background:#e65100;">📱 スマホからの入力 → Slack中継 → PCで処理</div>
+    <div class="card-body" style="font-size:9px;">
+      <ul class="step-list">
+        <li><div class="step-dot">1</div><div class="step-content">スマホのClaude.aiアプリで音声入力</div></li>
+        <li><div class="step-dot">2</div><div class="step-content">Claudeが確認後、<strong>#notify_sales_中国_四国エリア</strong>にSlack投稿（「📩 未処理」として記録）</div></li>
+        <li><div class="step-dot">3</div><div class="step-content">PC（Cowork）を起動すると<strong>自動で未処理を検出</strong>。「📩 未処理ログが N件 あります」と通知</div></li>
+        <li><div class="step-dot">4</div><div class="step-content">「はい」で1件ずつ確認 → GAS送信 → ✅ Done完了</div></li>
+      </ul>
+      <div style="background:#fff3e0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#e65100;border:1px solid #ffcc80;">
+        ⚠️ GAS送信はCowork（PC）でしかできません。スマホはSlack投稿までで一旦停止します。
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="card">
+    <div class="card-head">⚠️ 重要な注意事項</div>
+    <div class="card-body" style="font-size:9px;">
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div>✗ 確認なしに勝手にGAS送信・Slack投稿しない</div>
+        <div>✗ 個人ネタ（personal）とビジネスメモは混ぜない</div>
+        <div>✗ 複数人・複数支店まとめて言われたら1件ずつ確認→送信</div>
+        <div>✗ DBタブは絶対に触らない</div>
+        <div>✓ モード判定で迷ったら「行員/銀行どっち？」と1行確認</div>
+        <div>✓ 銀行名は略称でOK（「但馬」→「但馬信用金庫」に自動補完）</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════════
      ページ 8 ｜ 高知県補助金ツールの使い方
