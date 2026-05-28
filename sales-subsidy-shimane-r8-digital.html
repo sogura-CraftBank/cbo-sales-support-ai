@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>島根県 ご提案書ジェネレーター｜CraftBank office</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--dk:#102e24;--gn:#2e724c;--lg:#4A9B82;--pale:#e8f4f0;--ora:#F5A623;--bd:#d4e8e0;--bg:#f3f8f6;--red:#e05252;--txt:#1a1a1a;--sub:#5a7a6a;--pref:#1a3a6a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:var(--bg);color:var(--txt);font-size:13px}
+.app{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+.app-header{background:var(--dk);border-radius:12px;padding:14px 20px;margin-bottom:0;display:flex;align-items:center;gap:10px}
+.badge{background:var(--pref);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px}
+.app-header h1{color:#fff;font-size:14px;font-weight:700;flex:1}
+.tag{color:rgba(255,255,255,.45);font-size:10px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tab{flex:1;min-width:130px;padding:9px 6px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;font-size:12px;font-weight:700;color:var(--sub);cursor:pointer;transition:all .2s;text-align:center}
+.tab.active{background:var(--gn);border-color:var(--gn);color:#fff}
+.panel{display:none}.panel.active{display:block}
+.card{background:#fff;border-radius:10px;border:1px solid var(--bd);padding:16px 18px;margin-bottom:12px}
+.card-title{font-size:10px;font-weight:700;color:var(--gn);letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--bd)}
+.field{margin-bottom:10px}.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:11px;font-weight:700;color:#555;margin-bottom:4px}
+.field select,.field input[type=text]{width:100%;border:1.5px solid var(--bd);border-radius:7px;padding:8px 11px;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;background:#fff}
+.field select:focus,.field input[type=text]:focus{border-color:var(--lg);box-shadow:0 0 0 3px rgba(74,155,130,.12)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price-hint{font-size:11px;color:var(--gn);font-weight:700;margin-top:4px}
+.slider-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.slider-row input[type=range]{flex:1;accent-color:var(--gn)}
+.slider-val{font-size:13px;font-weight:700;color:var(--gn);min-width:80px;text-align:right;white-space:nowrap}
+.slider-sub{font-size:11px;color:var(--sub);margin-top:4px}
+.slider-default{font-size:11px;color:var(--sub);margin-top:3px}
+.slider-default span{color:var(--gn);font-weight:700}
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.s-card{background:#fff;border-radius:10px;border:1px solid var(--bd);padding:12px 14px}
+.s-card.accent{background:var(--gn);border-color:var(--gn)}
+.s-card.sub-accent{background:var(--pale)}
+.s-card.saving{background:#fff9ee;border-color:#f0d890}
+.s-label{font-size:10px;color:var(--sub);margin-bottom:3px;line-height:1.4}
+.s-card.accent .s-label{color:rgba(255,255,255,.7)}
+.s-card.saving .s-label{color:#906800}
+.s-val{font-size:19px;font-weight:700;color:var(--txt)}
+.s-card.accent .s-val{color:#fff}
+.s-card.saving .s-val{color:#b07000}
+.s-sub{font-size:10px;color:var(--sub);margin-top:2px}
+.s-card.accent .s-sub{color:rgba(255,255,255,.55)}
+.sec-label{font-size:10px;font-weight:700;color:var(--sub);letter-spacing:.7px;text-transform:uppercase;margin-bottom:8px}
+.chart-wrap{position:relative;height:270px;margin-top:6px}
+.chart-info{text-align:center;font-size:11px;color:var(--sub);margin-top:6px}
+.chart-diff{text-align:center;font-size:11px;font-weight:700;color:var(--gn);margin-top:3px}
+.open-btn{width:100%;padding:13px;background:var(--gn);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;transition:opacity .2s}
+.open-btn:disabled{opacity:.4;cursor:not-allowed}
+.open-btn:not(:disabled):hover{opacity:.88}
+.sep{border:none;border-top:1px solid var(--bd);margin:12px 0}
+table.bd{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px}
+table.bd thead tr th{background:var(--pale);padding:7px 9px;font-weight:700;color:var(--gn)}
+table.bd tbody tr td{padding:6px 9px;border-bottom:1px solid var(--bd)}
+table.bd tfoot tr td{padding:7px 9px;background:#f8fdf8;font-weight:700;border-top:2px solid var(--bd)}
+table.cmp{width:100%;border-collapse:collapse;font-size:12px}
+table.cmp thead tr th{background:var(--pale);padding:7px 9px;font-weight:700}
+table.cmp tbody tr td{padding:6px 9px;border-bottom:1px solid var(--bd)}
+td.rh{font-weight:600;color:#444}
+.legend{display:flex;gap:14px;justify-content:center;margin-bottom:8px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--sub)}
+.legend-dot{width:12px;height:3px;border-radius:2px}
+/* 説明タブ */
+.talk-block{background:#fff;border-radius:10px;border:1px solid var(--bd);padding:14px 16px;margin-bottom:10px}
+.talk-title{font-size:12px;font-weight:700;color:var(--gn);margin-bottom:10px}
+.talk-pt{display:flex;gap:8px;align-items:flex-start;margin-bottom:7px}
+.pt-dot{width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:4px}
+.pt-txt{font-size:12px;line-height:1.7}
+.n{font-weight:700;color:var(--gn)}
+.talk-note{font-size:11px;color:var(--sub);background:var(--pale);border-radius:6px;padding:7px 10px;margin-top:6px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-header" style="margin-bottom:14px">
+    <div style="flex:1">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="badge" style="background:#1a3a6a">島根県</div>
+        <h1 style="font-size:12px;line-height:1.3"><span style="opacity:.65;font-size:10px">令和8年度</span> 中小企業デジタル導入加速化補助金<br><span style="font-size:11px;opacity:.8">× ご提案書ジェネレーター</span></h1>
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('calc')">📊 試算シート</div>
+    <div class="tab" onclick="switchTab('talk')">💬 説明ポイント</div>
+    <div class="tab" onclick="switchTab('guide')" style="background:#fff8e6;border-color:#f0d890;color:#8a6800">📖 制度概要</div>
+  </div>
+
+  <!-- TAB1 試算シート -->
+  <div class="panel active" id="panel-calc">
+    <div class="card" style="border-left:3px solid #1a3a6a;background:#e8ecf5">
+      <div class="card-title" style="color:#1a3a6a">制度のポイント</div>
+      <div style="font-size:12px;line-height:2;color:#1a2040">
+        <div>✅ <strong>補助上限150万円</strong>（下限15万円）｜ソフト事業：補助率 <strong>1/2</strong></div>
+        <div>📅 1次締切：<strong>6月26日（木）17時</strong>　2次：7月31日　3次：8月28日　4次：10月16日</div>
+        <div>📌 <strong>交付決定後〜2027年1月31日</strong>が補助対象期間。月額補助は交付決定後から対象</div>
+        <div>⚠️ <strong>申請はGビズID必須</strong>（取得に2〜3週間かかる場合あり）</div>
+        <div style="font-size:11px;color:#3a4a7a;margin-top:1px">※ ハード事業（機器購入等）は1/3補助。CBO（SaaS）はソフト事業（1/2）に該当</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">基本情報</div>
+      <div class="field">
+        <label>会社名（ご提案書に反映）</label>
+        <input type="text" id="company-name" placeholder="例：○○建設株式会社" oninput="calc(true)"
+          style="width:100%;border:1.5px solid var(--bd);border-radius:7px;padding:8px 11px;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s;background:#fff">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>売上規模</label>
+          <select id="scale" onchange="calc()">
+            <option value="">選択してください</option>
+            <option value="900000">1億未満</option>
+            <option value="1500000">1〜2億</option>
+            <option value="2000000">2〜3億</option>
+            <option value="3000000">3〜5億</option>
+            <option value="4000000">5〜7億</option>
+            <option value="5000000">7〜10億</option>
+            <option value="6000000">10〜20億</option>
+            <option value="8000000">20億〜</option>
+          </select>
+          <div class="price-hint" id="price-hint" style="display:none">売値（下限）：<span id="price-disp"></span></div>
+        </div>
+        <div class="field">
+          <label>ID数（従業員数）</label>
+          <select id="ids" onchange="calc()">
+            <option value="10">10 ID</option><option value="15">15 ID</option>
+            <option value="20">20 ID</option><option value="25">25 ID</option>
+            <option value="30">30 ID</option><option value="35">35 ID</option>
+            <option value="40">40 ID</option><option value="45">45 ID</option>
+            <option value="50">50 ID</option><option value="55">55 ID</option>
+            <option value="60">60 ID</option><option value="65">65 ID</option>
+            <option value="70">70 ID</option><option value="75">75 ID</option>
+            <option value="80">80 ID</option><option value="85">85 ID</option>
+            <option value="90">90 ID</option><option value="95">95 ID</option>
+            <option value="100">100 ID</option>
+          </select>
+          <div id="scale-note" style="font-size:10px;color:var(--sub);margin-top:4px;line-height:1.6"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="slider-area" style="display:none">
+      <div class="card-title">初期費用の調整</div>
+      <div class="field">
+        <label>① 売値の裁量調整（案件の規模・複雑さに応じて）</label>
+        <div class="slider-row">
+          <input type="range" id="price-adj" min="0" max="3000000" step="100000" value="0" oninput="onSlide()">
+          <div class="slider-val" id="price-adj-disp">＋0万円</div>
+        </div>
+        <div class="slider-sub" id="adj-total-disp"></div>
+      </div>
+      <hr class="sep">
+      <div class="field">
+        <label>② 月額差額の上乗せ（補助金活用のため初期費用に加算）</label>
+        <div class="slider-row">
+          <input type="range" id="uplift" min="0" step="100000" oninput="onSlide()">
+          <div class="slider-val" id="uplift-disp">—</div>
+        </div>
+        <div class="slider-sub" id="uplift-months-disp"></div>
+        <div class="slider-default">推奨値：<span id="default-disp">—</span><span id="default-raw" style="font-size:10px;color:var(--sub);margin-left:6px"></span></div>
+      </div>
+    </div>
+    <div id="result-area" style="display:none">
+      <div class="card">
+        <div class="card-title">上乗せ根拠と初期費用の比較</div>
+        <div class="sec-label">上乗せ内訳</div>
+        <table class="bd">
+          <thead><tr>
+            <th style="text-align:left;border-radius:6px 0 0 0">項目</th>
+            <th style="text-align:center">計算式</th>
+            <th style="text-align:right;border-radius:0 6px 0 0">金額</th>
+          </tr></thead>
+          <tbody id="bd-tbody"></tbody>
+          <tfoot><tr>
+            <td style="border-radius:0 0 0 6px">推奨上乗せ合計<br><span style="font-size:10px;font-weight:400;opacity:.75">（10万円単位で四捨五入した金額）</span></td>
+            <td id="bd-rawval" style="text-align:center;opacity:.75;font-size:11px;font-weight:400"></td>
+            <td style="text-align:right;border-radius:0 0 6px 0" id="bd-default">—</td>
+          </tr></tfoot>
+        </table>
+        <div class="sec-label" style="margin-top:4px">初期費用 3パターン比較</div>
+        <div style="overflow-x:auto">
+          <table class="cmp">
+            <thead><tr>
+              <th style="text-align:left;min-width:90px"></th>
+              <th style="text-align:right;color:var(--sub)">補助金なし</th>
+              <th style="text-align:right;color:var(--gn)">クラフトバンク</th>
+              <th style="text-align:right;color:var(--red)">行政書士</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="rh">初期費用</td><td style="text-align:right" id="c-p-n">—</td><td style="text-align:right" id="c-p-cb">—</td><td style="text-align:right" id="c-p-g">—</td></tr>
+              <tr><td class="rh">補助金</td><td style="text-align:right;color:var(--sub)">なし</td><td style="text-align:right;color:var(--gn)" id="c-s-cb">—</td><td style="text-align:right;color:var(--gn)" id="c-s-g">—</td></tr>
+              <tr><td class="rh">申請代行費</td><td style="text-align:right;color:var(--sub)">なし</td><td style="text-align:right;color:var(--gn);font-weight:700">無料</td><td style="text-align:right;color:var(--red)" id="c-f-g">—</td></tr>
+              <tr><td class="rh">月額（/ID）</td><td style="text-align:right;color:var(--sub)">3,000円</td><td style="text-align:right;color:var(--gn);font-weight:700">2,500円</td><td style="text-align:right;color:var(--sub)">3,000円</td></tr>
+              <tr style="background:var(--pale)"><td class="rh" style="font-weight:700">実質負担</td><td style="text-align:right;font-weight:700" id="c-b-n">—</td><td style="text-align:right;font-weight:700" id="c-b-cb">—</td><td style="text-align:right;font-weight:700;color:var(--red)" id="c-b-g">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="burden-alert" style="display:none;background:#fff0f0;border:1.5px solid var(--red);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px;color:#c0392b;gap:8px;align-items:flex-start;line-height:1.6"></div>
+
+      <!-- 150万上限バー -->
+      <div class="card" style="padding:12px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="font-size:11px;font-weight:700;color:var(--sub)">補助金上限 150万円 達成度</div>
+          <div style="font-size:11px;font-weight:700" id="limit-right">—</div>
+        </div>
+        <div style="background:#eee;border-radius:4px;height:8px;overflow:hidden">
+          <div id="limit-bar-fill" style="height:100%;width:0%;background:var(--gn);border-radius:4px;transition:width .4s"></div>
+        </div>
+        <div style="font-size:10px;color:var(--sub);margin-top:5px" id="limit-note"></div>
+      </div>
+
+      <div class="sum-grid">
+        <div class="s-card sub-accent"><div class="s-label">調整後 初期費用</div><div class="s-val" id="r-total">—</div><div class="s-sub">売値＋裁量調整＋月額差額</div></div>
+        <div class="s-card accent"><div class="s-label" id="r-rate-label">補助金額（1/2・上限150万）</div><div class="s-val" id="r-subsidy">—</div><div class="s-sub" id="r-rate-sub">島根県から支給</div></div>
+        <div class="s-card"><div class="s-label" id="r-burden-label">自己負担（1/2）</div><div class="s-val" id="r-burden">—</div><div class="s-sub">実際に払う金額</div></div>
+        <div class="s-card saving"><div class="s-label">🎁 申請サポート節約</div><div class="s-val" id="r-support">—</div><div class="s-sub">行政書士に依頼した場合の費用</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">5年間の累計負担比較</div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#2e724c"></div>クラフトバンク</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#e05252"></div>行政書士ルート</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#999;opacity:.7"></div>補助金なし</div>
+        </div>
+        <div class="chart-wrap"><canvas id="myChart"></canvas></div>
+        <div class="chart-info" id="chart-info"></div>
+        <div class="chart-diff" id="chart-diff"></div>
+      </div>
+      <button class="open-btn" id="open-btn" onclick="openClientView()" disabled>📄 クライアント用　ご提案書　を出力する</button>
+    </div>
+  </div>
+
+  <!-- TAB2 説明ポイント -->
+  <div class="panel" id="panel-talk">
+    <div id="talk-ph" class="card" style="text-align:center;padding:28px;color:var(--sub)">先に「試算シート」で売上規模とID数を入力してください</div>
+    <div id="talk-body" style="display:none">
+      <div class="talk-block">
+        <div class="talk-title">📌 この補助金、ざっくり言うと</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt"><span class="n">令和8年度</span> 島根県内の会社が対象の補助金です</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">業務効率化のためにソフトを導入したとき、<span class="n">初期費用の1/2が補助されます（上限150万円）</span></div></div>
+        <div class="talk-note">補助率はソフト事業（SaaS等）一律 <strong>1/2</strong> です。小規模・中小の区分なく適用されます。</div>
+      </div>
+      <div class="talk-block">
+        <div class="talk-title">💰 今回の初期費用の内訳</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">通常の導入費用：<span class="n" id="t-price">—</span></div></div>
+        <div class="talk-pt"><div class="pt-dot"></div>
+          <div class="pt-txt">月額の上乗せ分：<span class="n" id="t-uplift">—</span>
+            <div style="font-size:11px;color:var(--sub);margin-top:3px;line-height:1.6">
+              ・月額を通常3,000円 → <strong style="color:var(--gn)">2,500円</strong>に値引きするので、1IDあたり500円/月の差が出ます<br>
+              ・その差額3年分（500円×ID数×36ヶ月）と申請サポート費用の一部を<br>　初期費用に上乗せしています<br>
+              ・初期費用<strong>に補助金が出る</strong>ので、月額に乗せるより<span class="n">お得</span>になります
+            </div>
+          </div>
+        </div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">合計（補助対象額）：<span class="n" id="t-total">—</span></div></div>
+        <div class="talk-note">💡 ポイント：「月額を値引きする代わりに、その分を初期費用に乗せて補助金を多く活用する」設計です</div>
+      </div>
+      <div class="talk-block">
+        <div class="talk-title">🎯 補助金でいくら戻るか</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">補助金額：<span class="n" id="t-sub">—</span>が戻ってきます（上限150万円）</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">自己負担：<span class="n" id="t-bur">—</span>だけ</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">月額も通常より<span class="n" id="t-msave">—</span>/月お得になります</div></div>
+      </div>
+      <div class="talk-block">
+        <div class="talk-title">📋 申請サポートについて</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">補助金の申請は書類が多く、通常は行政書士に依頼します（費用は補助金の約20%）</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">その費用は今回でいうと<span class="n" id="t-gfee">—</span>です</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt"><span class="n">クラフトバンクなら申請サポートが無料です</span></div></div>
+        <div class="talk-note">その分を初期費用に上乗せしているので、両者ともwin-winの設計です。申請にはGビズIDが必要です（取得に2〜3週間かかる場合あり）。</div>
+      </div>
+      <div class="talk-block">
+        <div class="talk-title">⚡ 締切が近いです</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt"><span class="n">1次締切は6月26日（木）17時</span>。GビズIDの取得に2〜3週間かかります</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">間に合わなくても2次（7/31）・3次（8/28）・4次（10/16）があります</div></div>
+        <div class="talk-note">予算の範囲内で終了する場合があるため、早めの申請が有利です。</div>
+      </div>
+      <div class="talk-block">
+        <div class="talk-title">📈 5年間で比べると（グラフを見せながら）</div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">緑がクラフトバンク（補助金活用）、赤が行政書士に頼んだ場合の累計負担です</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt" id="t-cross">—</div></div>
+        <div class="talk-pt"><div class="pt-dot"></div><div class="pt-txt">5年後の差額は<span class="n" id="t-diff">—</span>です</div></div>
+        <div class="talk-note">補助は初期費用に対して1/2。4年目以降も月額は2,500円×ID数のままです。行政書士ルートは3,000円×ID数が続きます。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB3 制度概要 -->
+  <div class="panel" id="panel-guide">
+    <div class="card" style="border-left:3px solid #1a3a6a;background:#e8ecf5">
+      <div class="card-title" style="color:#1a3a6a">📖 制度概要</div>
+      <div style="font-size:12px;color:#1a2040;line-height:1.8">
+        このツールは<strong>島根県 中小企業デジタル導入加速化補助金</strong>を活用したCBO提案の試算と、クライアント向けご提案書の出力を行います。<br>
+        <span style="font-size:11px;opacity:.7">※ 社内専用ツールです。画面共有の際は必ずご提案書タブを使用してください。</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">制度の基本情報</div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <tbody>
+          <tr><td style="padding:7px 8px;font-weight:700;width:38%;border-bottom:1px solid var(--bd)">正式名称</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">令和8年度 中小企業デジタル導入加速化補助金</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">実施機関</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">島根県中小企業団体中央会（島根県商工会連合会扱い）</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">対象</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">島根県内に事業所等を有する中小企業者等</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">事業区分</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">ハード事業（1/3以内）／<strong>ソフト事業（1/2以内）</strong></td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">補助上限</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)"><strong>150万円</strong>（下限15万円）※ ハード・ソフト合算</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">対象事業</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">業務課題解決のためにデジタル技術を活用・導入する事業</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">補助対象期間</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">交付決定日〜令和9（2027）年1月31日</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">1次締切</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)"><strong>令和8年6月26日（木）17:00</strong></td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">2次締切</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">令和8年7月31日（木）17:00</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">3次締切</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">令和8年8月28日（木）17:00</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700;border-bottom:1px solid var(--bd)">4次締切</td><td style="padding:7px 8px;border-bottom:1px solid var(--bd)">令和8年10月16日（木）17:00</td></tr>
+          <tr><td style="padding:7px 8px;font-weight:700">公式情報</td><td style="padding:7px 8px"><a href="https://www.crosstalk.or.jp/r8digital_innovation.html" target="_blank" rel="noopener" style="color:var(--gn)">島根県中小企業団体中央会 HP</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">CBOはソフト事業（1/2）に該当</div>
+      <div style="background:#e8f8ee;border:2px solid #a0ddb4;border-radius:8px;padding:12px 14px;margin-bottom:10px">
+        <div style="font-size:10px;font-weight:700;color:#1a7a42;margin-bottom:6px">✅ CraftBank office の区分</div>
+        <div style="font-size:14px;font-weight:700;color:#1a1a1a">SaaS（クラウドソフト）= <span style="color:#1a7a42;font-size:16px">ソフト事業（補助率 1/2）</span></div>
+        <div style="font-size:11px;color:#555;margin-top:6px;line-height:1.6">ハード事業（機器購入・有線LAN整備等）は1/3補助。両方申請する場合は合算で上限150万円。</div>
+      </div>
+      <div style="font-size:10px;color:var(--sub);line-height:1.6">※ 小規模事業者・中小企業の区分に関わらず、ソフト事業の補助率は一律1/2です。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">申請の注意事項</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">GビズIDの取得が必須（取得に2〜3週間かかる場合あり）</div></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">予算の範囲内で終了する場合あり。<strong>1次締切（6/26）が最も有利</strong></div></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">デジタル導入計画（業務課題・解決策）の記載が審査ポイント</div></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">発注・契約・納品・支払・効果検証・実績報告すべてを2027/1/31までに完了する必要あり</div></div>
+        <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:6px;height:6px;border-radius:50%;background:var(--gn);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;line-height:1.7">IT導入補助金との重複申請は要確認（同一経費は不可）</div></div>
+      </div>
+    </div>
+
+    <div style="background:#fffbea;border:1.5px solid #f0d060;border-radius:8px;padding:10px 13px;font-size:11px;color:#7a5800;line-height:1.7">
+      <strong>📞 問い合わせ先</strong><br>
+      島根県中小企業団体中央会（詳細は<a href="https://www.crosstalk.or.jp/r8digital_innovation.html" target="_blank" rel="noopener" style="color:#7a5800;text-decoration:underline">公式サイト</a>をご確認ください）<br>
+      <span style="font-size:10px;opacity:.8">※ 申請様式のダウンロード等も上記サイトに掲載されています</span>
+    </div>
+  </div>
+</div>
+<script>
+let myChart = null;
+let gS = {};
+
+const fmtM = n => Math.round(n/10000).toLocaleString() + '万円';
+const fmt  = n => Math.round(n).toLocaleString() + '円';
+
+const RATE = 1/2;        // ソフト事業 一律1/2
+const CAP  = 1500000;    // 上限150万円
+
+function switchTab(t) {
+  const ids = ['calc','talk','guide'];
+  document.querySelectorAll('.tab').forEach((el,i) => el.classList.toggle('active', ids[i]===t));
+  ids.forEach(id => { const p=document.getElementById('panel-'+id); if(p) p.classList.toggle('active',id===t); });
+}
+
+function onSlide() { calc(true); }
+
+function calc(fromSlider) {
+  const price = parseInt(document.getElementById('scale').value)||0;
+  const ids   = parseInt(document.getElementById('ids').value)||10;
+
+  // 月額計算
+  let monthly;
+  const tbl = [[10,30000],[15,45000],[20,60000],[25,75000],[30,90000],[35,98000],[40,110000],[45,112500],[50,125000],[60,144000],[70,161000],[80,176000],[90,189000],[100,200000]];
+  const base = tbl.filter(r=>r[0]<=ids).pop();
+  monthly = base ? base[1] + (ids-base[0])*3500 : 30000;
+  // テーブルにある値はそのまま使用
+  const exact = tbl.find(r=>r[0]===ids);
+  if(exact) monthly = exact[1];
+
+  const scaleLabel = '中小企業（1/2）';
+  document.getElementById('scale-note').textContent = 'ソフト事業：補助率 1/2（一律）';
+
+  if (!price) {
+    document.getElementById('price-hint').style.display='none';
+    document.getElementById('slider-area').style.display='none';
+    document.getElementById('result-area').style.display='none';
+    return;
+  }
+  document.getElementById('price-hint').style.display='block';
+  document.getElementById('price-disp').textContent = fmtM(price);
+
+  const A = 500*ids*36;
+  const B = price*RATE*0.20*0.8;
+  const rawDefault = A + B;
+  const defUplift = Math.round(rawDefault/100000)*100000;
+
+  const upliftSl = document.getElementById('uplift');
+  if (!fromSlider) {
+    upliftSl.max = Math.max(defUplift*4, 5000000);
+    upliftSl.value = defUplift;
+  }
+
+  const priceAdj = parseInt(document.getElementById('price-adj').value)||0;
+  const uplift   = parseInt(upliftSl.value)||0;
+
+  document.getElementById('price-adj-disp').textContent = (priceAdj>0?'＋':'')+fmtM(priceAdj);
+  document.getElementById('adj-total-disp').textContent = '調整済み売値：' + fmtM(price+priceAdj);
+  document.getElementById('uplift-disp').textContent = fmtM(uplift);
+  document.getElementById('default-disp').textContent = fmtM(defUplift);
+  document.getElementById('default-raw').textContent = '（計算値 '+fmtM(rawDefault)+'を10万円単位で調整）';
+
+  document.getElementById('uplift-months-disp').innerHTML =
+    '<span style="color:var(--sub)">月額費用の差額相当（3年 36ヶ月）：<strong style=\'color:var(--gn)\'>' + fmtM(A) + '</strong>　' +
+    '申請サポート費用相当：<strong style=\'color:var(--gn)\'>' + fmtM(B) + '</strong></span>';
+
+  const adjPrice  = price + priceAdj;
+  const totalInit = adjPrice + uplift;
+  const subsidyRaw= totalInit * RATE;
+  const subsidy   = Math.min(subsidyRaw, CAP);
+  const burden    = totalInit - subsidy;
+  const supSave   = price * RATE * 0.20;
+  const gyFee     = price * RATE * 0.20;
+  const gyBurden  = price * (1 - RATE) + gyFee;
+
+  const companyName = document.getElementById('company-name').value.trim();
+  gS = {price, adjPrice, ids, priceAdj, uplift, totalInit, monthly, subsidyRaw, subsidy, burden, supSave, gyFee, gyBurden, A, B, rawDefault, defUplift, companyName, scaleLabel};
+
+  document.getElementById('bd-tbody').innerHTML =
+    '<tr><td>月額差額（1ヶ月）</td><td style="text-align:center;color:var(--sub)">500円 × '+ids+'ID</td><td style="text-align:right;font-weight:700">'+fmt(500*ids)+'</td></tr>'+
+    '<tr><td>月額差額（3年 36ヶ月分）</td><td style="text-align:center;color:var(--sub)">上記 × 36ヶ月</td><td style="text-align:right;font-weight:700">'+fmtM(A)+'</td></tr>'+
+    '<tr><td>申請サポート節約の8割</td><td style="text-align:center;color:var(--sub)">売値×1/2×20%×80%</td><td style="text-align:right;font-weight:700">'+fmtM(B)+'</td></tr>'+
+    '<tr style="background:var(--pale)"><td style="font-weight:700">合計（生値）</td><td style="text-align:center;color:var(--sub);font-size:11px">四捨五入前</td><td style="text-align:right;font-weight:700;color:var(--gn)">'+fmtM(rawDefault)+'</td></tr>';
+  document.getElementById('bd-rawval').textContent = fmtM(rawDefault)+' → ';
+  document.getElementById('bd-default').textContent = fmtM(defUplift);
+
+  document.getElementById('c-p-n').textContent  = fmtM(adjPrice);
+  document.getElementById('c-p-cb').innerHTML   = '<span style="color:var(--gn)">'+fmtM(totalInit)+'</span>';
+  document.getElementById('c-p-g').textContent  = fmtM(price);
+  document.getElementById('c-s-cb').innerHTML   = '<span style="color:var(--gn)">▲ '+fmtM(subsidy)+'</span>';
+  document.getElementById('c-s-g').innerHTML    = '<span style="color:var(--gn)">▲ '+fmtM(Math.min(price*RATE, CAP))+'</span>';
+  document.getElementById('c-f-g').innerHTML    = '<span style="color:var(--red)">▼ '+fmtM(gyFee)+'</span>';
+  document.getElementById('c-b-n').textContent  = fmtM(adjPrice);
+  document.getElementById('c-b-cb').textContent = fmtM(burden);
+  document.getElementById('c-b-cb').style.color = burden > gyBurden ? 'var(--red)' : 'var(--gn)';
+  document.getElementById('c-b-g').textContent  = fmtM(gyBurden);
+
+  document.getElementById('r-total').textContent   = fmtM(totalInit);
+  document.getElementById('r-subsidy').textContent = fmtM(subsidy);
+  document.getElementById('r-burden').textContent  = fmtM(burden);
+  document.getElementById('r-support').textContent = fmtM(supSave);
+
+  // 150万上限バー
+  const pct = Math.min(subsidyRaw/CAP,1)*100;
+  document.getElementById('limit-bar-fill').style.width = pct+'%';
+  document.getElementById('limit-bar-fill').style.background = subsidyRaw>CAP ? 'var(--red)' : 'var(--gn)';
+  document.getElementById('limit-right').textContent = fmtM(subsidyRaw)+' / 上限150万円';
+  document.getElementById('limit-note').textContent = subsidyRaw>CAP
+    ? '⚠️ 上限超過。補助金は150万円（頭打ち）。超過分 '+fmtM(subsidyRaw-CAP)+' は自己負担。'
+    : '✅ 上限以内。あと '+fmtM(CAP-subsidyRaw)+' の余裕あり';
+
+  const alertEl = document.getElementById('burden-alert');
+  if (burden > gyBurden) {
+    alertEl.style.display = 'flex';
+    alertEl.innerHTML = '⚠️ <strong>上乗せが多すぎます</strong>：クラフトバンクの実質負担（' + fmtM(burden) + '）が行政書士ルート（' + fmtM(gyBurden) + '）を超えています。スライダーを下げてください。';
+  } else {
+    alertEl.style.display = 'none';
+  }
+
+  const months = Array.from({length:61},(_,i)=>i);
+  const cbD = months.map(m => burden    + 2500*ids*m);
+  const gyD = months.map(m => gyBurden  + 3000*ids*m);
+  const noD = months.map(m => adjPrice  + 3000*ids*m);
+  let cross = null;
+  for(let m=0;m<=60;m++) { if(cbD[m]<=gyD[m]){cross=m;break;} }
+  const diff60 = gyD[60]-cbD[60];
+
+  drawChart(months, cbD, gyD, noD);
+  document.getElementById('chart-info').innerHTML =
+    cross===0 ? '✅ <strong>初月からクラフトバンクの方がお得</strong>'
+    : cross!==null ? '📍 <strong>'+cross+'ヶ月目</strong>でクラフトバンクが逆転'
+    : '※ スライダーを下げると逆転ポイントが現れます';
+  document.getElementById('chart-diff').textContent = '5年後の差額：'+fmtM(diff60)+' お得';
+
+  document.getElementById('slider-area').style.display='block';
+  document.getElementById('result-area').style.display='block';
+  document.getElementById('open-btn').disabled=false;
+
+  // 説明タブ更新
+  document.getElementById('talk-ph').style.display='none';
+  document.getElementById('talk-body').style.display='block';
+  document.getElementById('t-price').textContent  = fmtM(price);
+  document.getElementById('t-uplift').textContent = fmtM(uplift);
+  document.getElementById('t-total').textContent  = fmtM(totalInit);
+  document.getElementById('t-sub').textContent    = fmtM(subsidy);
+  document.getElementById('t-bur').textContent    = fmtM(burden);
+  document.getElementById('t-msave').textContent  = fmt(500*ids);
+  document.getElementById('t-gfee').textContent   = fmtM(gyFee);
+  document.getElementById('t-diff').textContent   = fmtM(diff60);
+  document.getElementById('t-cross').innerHTML    =
+    cross===0 ? '<span class="n">初月からクラフトバンクの累計負担の方が少ないです</span>'
+    : cross!==null ? '<span class="n">'+cross+'ヶ月目</span>でクラフトバンクの方が安くなります'
+    : 'グラフで推移をご確認ください';
+
+  gS._cbD=cbD; gS._gyD=gyD; gS._noD=noD; gS._cross=cross; gS._diff60=diff60;
+}
+
+function drawChart(months, cbD, gyD, noD) {
+  const ctx = document.getElementById('myChart').getContext('2d');
+  if(myChart) myChart.destroy();
+  const labels = months.map(m => m%6===0 ? m+'ヶ月' : '');
+  const fillPl = {id:'fill',beforeDraw(chart){
+    const {ctx:c,scales:{x,y}}=chart;
+    const cb=chart.data.datasets[0].data, gy=chart.data.datasets[1].data;
+    c.save(); c.beginPath();
+    for(let i=0;i<gy.length;i++){const px=x.getPixelForValue(i),py=y.getPixelForValue(gy[i]);i===0?c.moveTo(px,py):c.lineTo(px,py);}
+    for(let i=cb.length-1;i>=0;i--){const px=x.getPixelForValue(i),py=y.getPixelForValue(cb[i]);c.lineTo(px,py);}
+    c.closePath(); c.fillStyle='rgba(46,114,76,0.09)'; c.fill(); c.restore();
+  }};
+  myChart = new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[
+      {label:'クラフトバンク',data:cbD,borderColor:'#2e724c',borderWidth:2.5,pointRadius:0,tension:.1},
+      {label:'行政書士ルート',data:gyD,borderColor:'#e05252',borderWidth:2,borderDash:[5,3],pointRadius:0,tension:.1},
+      {label:'補助金なし',data:noD,borderColor:'#999',borderWidth:1.5,borderDash:[2,4],pointRadius:0,tension:.1}
+    ]},
+    plugins:[fillPl],
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label(c){return c.dataset.label+'：'+fmtM(c.parsed.y);}}}},
+      scales:{
+        x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#888',maxRotation:0}},
+        y:{grid:{color:'rgba(0,0,0,0.06)'},ticks:{font:{size:10},color:'#888',callback:v=>fmtM(v)}}
+      }
+    }
+  });
+}
+
+function openClientView() {
+  const s = gS;
+  if(!s.totalInit) return;
+  const cbArr = JSON.stringify(s._cbD);
+  const gyArr = JSON.stringify(s._gyD);
+  const noArr = JSON.stringify(s._noD);
+  const crossTxt = s._cross===0 ? '初月からクラフトバンクの累計負担が下回ります'
+    : s._cross!==null ? s._cross+'ヶ月目でクラフトバンクの方が安くなります'
+    : 'グラフをご確認ください';
+
+  const clientHTML = `<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CraftBank office 補助金シミュレーション</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"><\/script>
+<style>
+:root{--dk:#102e24;--gn:#2e724c;--pale:#e8f4f0;--bd:#d4e8e0;--red:#e05252;--txt:#1a1a1a;--sub:#5a7a6a;--pref:#1a3a6a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:#f3f8f6;color:var(--txt);font-size:13px}
+.app{max-width:700px;margin:0 auto;padding:20px 16px 48px}
+.hd{background:var(--dk);border-radius:12px;padding:16px 20px;margin-bottom:16px}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sc{background:#fff;border-radius:10px;border:1px solid var(--bd);padding:12px 14px}
+.sc.a{background:var(--gn);border-color:var(--gn)}
+.sc.p{background:var(--pale)}
+.sc.v{background:#fff9ee;border-color:#f0d890}
+.sl{font-size:10px;color:var(--sub);margin-bottom:3px}
+.sc.a .sl{color:rgba(255,255,255,.7)}
+.sc.v .sl{color:#906800}
+.sv{font-size:19px;font-weight:700;color:var(--txt)}
+.sc.a .sv{color:#fff}
+.sc.v .sv{color:#b07000}
+.ss{font-size:10px;color:var(--sub);margin-top:2px}
+.sc.a .ss{color:rgba(255,255,255,.55)}
+.card{background:#fff;border-radius:10px;border:1px solid var(--bd);padding:14px 16px;margin-bottom:12px}
+.ct{font-size:10px;font-weight:700;color:var(--gn);letter-spacing:.8px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{background:var(--pale);padding:7px 9px;font-weight:700}
+tbody td{padding:6px 9px;border-bottom:1px solid var(--bd)}
+td.rh{font-weight:600;color:#444}
+.leg{display:flex;gap:14px;justify-content:center;margin-bottom:8px;flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--sub)}
+.ld{width:12px;height:3px;border-radius:2px}
+.cw{position:relative;height:260px;margin-top:6px}
+.ci{text-align:center;font-size:11px;color:var(--sub);margin-top:6px}
+.cd{text-align:center;font-size:11px;font-weight:700;color:var(--gn);margin-top:3px}
+.nc{background:#fffbea;border:1.5px solid #f0d060;border-radius:8px;padding:10px 14px;font-size:11px;color:#7a5800;line-height:1.8;margin-top:12px}
+.nc ul{padding-left:16px}
+</style>
+</head><body>
+<div class="app">
+  <div class="hd">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="background:#1a3a6a;color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap">島根県</span>
+      <span style="font-size:13px;font-weight:700;color:#fff;line-height:1.35"><span style="opacity:.7;font-size:10px;font-weight:400">令和8年度</span> 中小企業デジタル導入加速化補助金 × ご提案書</span>
+    </div>
+    ${s.companyName ? `<div style="font-size:17px;font-weight:700;color:#fff;margin-top:8px">${s.companyName} 御中</div>` : ''}
+  </div>
+  <div class="sg">
+    <div class="sc p"><div class="sl">初期費用（補助対象額）</div><div class="sv">${fmtM(s.totalInit)}</div><div class="ss">導入費用＋月額先払い分</div></div>
+    <div class="sc a"><div class="sl">補助金額（1/2・上限150万）</div><div class="sv">${fmtM(s.subsidy)}</div><div class="ss">中小企業 ｜ 島根県から支給</div></div>
+    <div class="sc"><div class="sl">自己負担（1/2）</div><div class="sv">${fmtM(s.burden)}</div><div class="ss">実際に払う金額</div></div>
+    <div class="sc v"><div class="sl">🎁 申請サポート節約</div><div class="sv">${fmtM(s.supSave)}</div><div class="ss">通常：補助金の20%</div></div>
+  </div>
+  <div class="card" style="border:2px solid var(--gn);background:var(--pale);margin-bottom:14px">
+    <div class="ct" style="color:var(--gn)">月額利用料（補助金採択後）</div>
+    <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+      <div style="font-size:28px;font-weight:700;color:var(--gn)">${fmt(2500*s.ids)}</div>
+      <div style="font-size:13px;color:#5a7a6a">円 / 月（税抜）</div>
+      <div style="margin-left:auto;font-size:12px;background:var(--gn);color:#fff;padding:3px 10px;border-radius:20px">2,500円/ID × ${s.ids} ID</div>
+    </div>
+    <div style="font-size:11px;color:#5a7a6a;background:#fff;border-radius:6px;padding:7px 10px;line-height:1.7">
+      通常単価（3,000円/ID）より <strong style="color:var(--gn)">500円/ID お得</strong>　→　年間 <strong style="color:var(--gn)">${fmtM(500*s.ids*12)}</strong> の節約<br>
+      補助率：<strong style="color:var(--gn)">1/2</strong>（ソフト事業・島根県 中小企業デジタル導入加速化補助金）
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct">初期費用 3パターン比較</div>
+    <div style="overflow-x:auto"><table>
+      <thead><tr>
+        <th style="text-align:left;min-width:90px"></th>
+        <th style="text-align:right;color:#5a7a6a">補助金なし</th>
+        <th style="text-align:right;color:var(--gn)">クラフトバンク</th>
+        <th style="text-align:right;color:var(--red)">行政書士</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="rh">初期費用</td><td style="text-align:right">${fmtM(s.adjPrice)}</td><td style="text-align:right;color:var(--gn)">${fmtM(s.totalInit)}</td><td style="text-align:right">${fmtM(s.price)}</td></tr>
+        <tr><td class="rh">補助金</td><td style="text-align:right;color:#aaa">なし</td><td style="text-align:right;color:var(--gn)">▲ ${fmtM(s.subsidy)}</td><td style="text-align:right;color:var(--gn)">▲ ${fmtM(Math.min(s.price*0.5,1500000))}</td></tr>
+        <tr><td class="rh">申請代行費</td><td style="text-align:right;color:#aaa">なし</td><td style="text-align:right;color:var(--gn);font-weight:700">無料</td><td style="text-align:right;color:var(--red)">▼ ${fmtM(s.gyFee)}</td></tr>
+        <tr><td class="rh">月額（/ID）</td><td style="text-align:right;color:#aaa">3,000円</td><td style="text-align:right;color:var(--gn);font-weight:700">2,500円</td><td style="text-align:right;color:#aaa">3,000円</td></tr>
+        <tr style="background:var(--pale)"><td class="rh" style="font-weight:700">実質負担</td><td style="text-align:right;font-weight:700">${fmtM(s.adjPrice)}</td><td style="text-align:right;font-weight:700;color:var(--gn)">${fmtM(s.burden)}</td><td style="text-align:right;font-weight:700;color:var(--red)">${fmtM(s.gyBurden)}</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="ct">5年間の累計負担比較</div>
+    <div class="leg">
+      <div class="li"><div class="ld" style="background:#2e724c"></div>クラフトバンク</div>
+      <div class="li"><div class="ld" style="background:#e05252"></div>行政書士ルート</div>
+      <div class="li"><div class="ld" style="background:#999;opacity:.7"></div>補助金なし</div>
+    </div>
+    <div class="cw"><canvas id="cc"></canvas></div>
+    <div class="ci"><strong>${crossTxt}</strong></div>
+    <div class="cd">5年後の差額：${fmtM(s._diff60)} お得</div>
+  </div>
+  <div class="nc"><ul>
+    <li>補助上限：<strong>150万円</strong>（下限15万円）｜ソフト事業（SaaS）補助率 1/2</li>
+    <li>1次締切：<strong>令和8年6月26日（木）17時</strong>　2次：7/31　3次：8/28　4次：10/16</li>
+    <li>補助対象期間：交付決定日〜<strong>令和9年1月31日</strong>。期間内に発注〜実績報告まで完了すること</li>
+    <li>GビズIDの取得が必須（取得に2〜3週間かかる場合あり）</li>
+  </ul></div>
+</div>
+<script>
+(function(){
+  var cbD=${cbArr},gyD=${gyArr},noD=${noArr};
+  var labels=Array.from({length:61},function(_,i){return i%6===0?i+'ヶ月':'';});
+  var fp={id:'fp',beforeDraw:function(chart){
+    var c=chart.ctx,x=chart.scales.x,y=chart.scales.y;
+    var cb=chart.data.datasets[0].data,gy=chart.data.datasets[1].data;
+    c.save();c.beginPath();
+    for(var i=0;i<gy.length;i++){var px=x.getPixelForValue(i),py=y.getPixelForValue(gy[i]);i===0?c.moveTo(px,py):c.lineTo(px,py);}
+    for(var i=cb.length-1;i>=0;i--){var px=x.getPixelForValue(i),py=y.getPixelForValue(cb[i]);c.lineTo(px,py);}
+    c.closePath();c.fillStyle='rgba(46,114,76,0.09)';c.fill();c.restore();
+  }};
+  new Chart(document.getElementById('cc').getContext('2d'),{
+    type:'line',
+    data:{labels:labels,datasets:[
+      {label:'クラフトバンク',data:cbD,borderColor:'#2e724c',borderWidth:2.5,pointRadius:0,tension:.1},
+      {label:'行政書士ルート',data:gyD,borderColor:'#e05252',borderWidth:2,borderDash:[5,3],pointRadius:0,tension:.1},
+      {label:'補助金なし',data:noD,borderColor:'#999',borderWidth:1.5,borderDash:[2,4],pointRadius:0,tension:.1}
+    ]},
+    plugins:[fp],
+    options:{responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+Math.round(c.parsed.y/10000).toLocaleString()+'万円';}}}},
+      scales:{
+        x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:10},color:'#888',maxRotation:0}},
+        y:{grid:{color:'rgba(0,0,0,0.06)'},ticks:{font:{size:10},color:'#888',callback:function(v){return Math.round(v/10000).toLocaleString()+'万円';}}}
+      }
+    }
+  });
+})();
+<` + `/script>
+</body></html>`;
+
+  try {
+    const docTitle = (s.companyName ? '【ご提案書】' + s.companyName + ' 御中_' : '【ご提案書】') + '令和8年度 島根県中小企業デジタル導入加速化補助金';
+    const finalHTML = clientHTML.replace('<title>CraftBank office 補助金シミュレーション</title>', '<title>' + docTitle + '</title>');
+    const blob = new Blob([finalHTML], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const dlA = document.createElement('a');
+    dlA.href = url;
+    dlA.download = docTitle + '.html';
+    document.body.appendChild(dlA);
+    dlA.click();
+    document.body.removeChild(dlA);
+    setTimeout(() => {
+      const w = window.open(url, '_blank');
+      if (!w) {
+        const a = document.createElement('a');
+        a.href = url; a.target = '_blank'; a.rel = 'noopener';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      }
+    }, 300);
+  } catch(e) {
+    alert('エラーが発生しました: ' + e.message);
+  }
+}
+
+calc();
+</script>
+</body>
+</html>
