@@ -369,17 +369,17 @@
     </div>
     <h1>営業支援AI 使い方ガイド</h1>
     <p>アポ登録・TDB追加・商談メモ・見積書作成を自動化。フォームに貼るだけ・ベタ書きOK。</p>
-    <span class="ver">Ver. 2.1 — 2026.04</span>
+    <span class="ver">Ver. 3.0 — 2026.05</span>
   </div>
 
-  <!-- 6つの使い方 -->
+  <!-- 7つの使い方 -->
   <div class="sec-title">
     <div class="sec-num">1</div>
-    <div class="sec-label">6つの使い方</div>
-    <div class="sec-sub">入力フォームの冒頭で自動判定</div>
+    <div class="sec-label">7つの使い方</div>
+    <div class="sec-sub">入力フォームの冒頭で自動判定 ／ 銀行・行員管理は専用チャットで</div>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:10px;">
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:10px;">
     <div class="use-card">
       <div class="uc-head uc-apo">【アポ】</div>
       <div class="uc-body">アポ情報を登録<br>カレンダー＋Slack通知</div>
@@ -401,8 +401,12 @@
       <div class="uc-body">見積書ジェネレーター起動</div>
     </div>
     <div class="use-card">
-      <div class="uc-head" style="background:#b71c1c;">補助金計算</div>
-      <div class="uc-body">自費 vs 補助金<br>シミュレーション</div>
+      <div class="uc-head" style="background:var(--blue);">銀行管理</div>
+      <div class="uc-body">支店接触ログ<br>Slack → 自動転記</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-head" style="background:#6A1B9A;">行員管理</div>
+      <div class="uc-body">行員接触ログ<br>Slack → 自動転記</div>
     </div>
   </div>
 
@@ -469,27 +473,34 @@
     <div class="sec-sub">チャット名変更推奨</div>
   </div>
 
-  <div class="col2">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
     <div class="card">
       <div class="card-head">📋 アポ・TDB専用チャット</div>
-      <div class="card-body" style="font-size: 9.5px;">
-        <strong>チャット名：</strong>「【chat】apo &amp; TDB」<br>
-        <br>
-        【アポ】→【TDB】の順に同チャットで記録。<br>
-        複数社を続けて登録してOK。
-        <div style="margin-top: 6px; font-size: 8.5px; color: var(--gray);">
-          ※ AIが冒頭に「チャット名を変更してください」と案内します
+      <div class="card-body" style="font-size: 9px;">
+        <strong>チャット名：</strong>「【chat】apo &amp; TDB」<br><br>
+        【アポ】→【TDB】の順に同チャットで記録。複数社続けてOK。
+        <div style="margin-top: 5px; font-size: 8px; color: var(--gray);">
+          ※ AIが冒頭に案内します
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-head orange">💬 商談・見積専用チャット（会社ごとに作成）</div>
-      <div class="card-body" style="font-size: 9.5px;">
-        <strong>初回後チャット名：</strong>「【○○株式会社】」<br>
-        <strong>2回目後チャット名：</strong>「【○○株式会社（2回目）】」<br>
-        <br>
-        <div style="margin-top: 2px; font-size: 8.5px; color: var(--gray);">
-          ※ アポ・TDBと商談は<strong>必ず別チャット</strong>で行ってください
+      <div class="card-head orange">💬 商談・見積専用チャット</div>
+      <div class="card-body" style="font-size: 9px;">
+        <strong>初回後：</strong>「【○○株式会社】」<br>
+        <strong>2回目後：</strong>「【○○株式会社（2回目）】」<br><br>
+        <div style="font-size: 8px; color: var(--gray);">
+          ※ アポ・TDBと商談は<strong>必ず別チャット</strong>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head" style="background:var(--blue);">🏦 銀行・行員管理専用チャット</div>
+      <div class="card-body" style="font-size: 9px;">
+        <strong>チャット名：</strong>「【chat】銀行・行員管理」<br><br>
+        スマホ・PCどちらでも動作。使い回しOK、毎回新規作成不要。
+        <div style="margin-top: 5px; font-size: 8px; color: var(--gray);">
+          ※ 初回のみプロンプトを貼り付けること
         </div>
       </div>
     </div>
@@ -754,10 +765,6 @@ HP：
             <div class="step-content"><strong>補助金スコア計算 → Slackスレッド返信</strong>（AJ〜AM列）<span class="badge badge-slack">Slack</span></div>
           </li>
           <li>
-            <div class="step-dot" style="background:#fce4ec;border-color:#f48fb1;color:#880e4f;font-size:8px;width:22px;height:22px;">高知</div>
-            <div class="step-content"><strong>高知県案件のみ：</strong>所得向上補助金シミュレーションをスレッドに追加返信</div>
-          </li>
-          <li>
             <div class="step-dot">5</div>
             <div class="step-content"><strong>スプレッドシート用データを出力</strong><span class="badge badge-manual">手動コピペ</span></div>
           </li>
@@ -787,9 +794,7 @@ HP：
   <div class="tip">
     <strong>💡 POINT:</strong> 【アポ】→【TDB】の順に<strong>同じチャット</strong>で入力してください。カレンダー予定を自動で紐付けて更新します。
   </div>
-  <div class="tip" style="margin-top:5px;border-left-color:#880e4f;background:#fce4ec;">
-    <strong style="color:#880e4f;">🏔 高知県案件：</strong>補助金スコアに続けて、<strong>所得向上推進企業等総合支援事業費補助金</strong>のシミュレーションが自動でスレッドに追加されます。
-  </div>
+
   <div class="trigger-box" style="margin-top:7px;">
     <div class="trigger-label">📋 入力フォームテンプレート（コピペしてClaudeに貼り付け）</div>
     <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 事前情報フォーム【TDB】
@@ -1126,12 +1131,7 @@ HP：
   <div class="card" style="margin-bottom:8px;">
     <div class="card-head" style="background:#b71c1c;">🔒 社内専用ツールについて</div>
     <div class="card-body" style="font-size:9.5px;">
-      <p style="margin-bottom:5px;">見積ジェネレーター・高知県補助金ツールの画面上部には以下の赤いバナーが表示されます：</p>
-      <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;display:flex;justify-content:space-between;align-items:center;">
-        <span>🔒 INTERNAL ONLY — 社内専用ツール</span>
-        <span style="opacity:.75;font-size:9px;">画面共有時は提案書タブを使用してください</span>
-      </div>
-      <p style="font-size:8.5px;color:var(--gray);margin-top:5px;">画面共有でお客様に見せる際は必ず「提案書」タブに切り替えてください。</p>
+      <p>見積ジェネレーターは社内専用ツールです。お客様への画面共有時はご注意ください。</p>
     </div>
   </div>
 
@@ -1474,445 +1474,312 @@ PDF（売上・従業員数等）：（URL）
     </div>
   </div>
 
-</div>
-
 
 <!-- ══════════════════════════════════════════
-     ページ 7 ｜ 補助金シミュレーション
+     ページ 07 ｜ 銀行・行員管理AI — 概要・セットアップ
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
     <div class="page-num">07</div>
-    <h2>自費 vs デジタル化・AI導入補助金2026 シミュレーション</h2>
-    <span class="hint">— TDB PDFと一緒に送信</span>
+    <h2>銀行・行員管理AI 使い方ガイド</h2>
+    <span class="hint">— 音声入力するだけでSlack投稿 → スプレッドシート自動転記</span>
   </div>
 
-  <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-    🔒 INTERNAL ONLY — 社内専用ツール
+  <!-- これは何？ -->
+  <div class="card" style="margin-bottom:10px;border-left:4px solid var(--blue);">
+    <div class="card-body" style="font-size:10px;line-height:1.9;">
+      銀行員・支店に会った情報を<strong>音声入力するだけ</strong>で、自動でSlackに投稿してスプレッドシートに記録できるシステムです。<br>
+      スプレッドシートへの手入力は不要です。
+    </div>
   </div>
 
-  <div class="trigger-box">
-    <div class="trigger-label">📌 トリガー（冒頭に必ず入れる）＋ TDB PDFを添付</div>
-    <span class="trigger-code">## 補助金シミュレーション【TDB】</span>
-  </div>
-
-  <div class="col2" style="gap: 8px; margin-bottom: 8px;">
-    <div>
-      <div class="sec-title" style="margin-top: 0;">
-        <div class="sec-num">S1</div>
-        <div class="sec-label">STEP 1–3：自動実行</div>
-      </div>
-      <div class="card">
-        <div class="card-head" style="background:#b71c1c;">🔄 自動処理の流れ</div>
-        <div class="card-body">
-          <ul class="step-list">
-            <li>
-              <div class="step-dot">1</div>
-              <div class="step-content"><strong>TDB PDFを読み取り</strong>：会社名・売上・利益・資本金・決算月を自動抽出</div>
-            </li>
-            <li>
-              <div class="step-dot">2</div>
-              <div class="step-content"><strong>自動計算</strong>：利益率・推定実効税率・決算残月数・警告条件</div>
-            </li>
-            <li>
-              <div class="step-dot">3</div>
-              <div class="step-content"><strong>営業情報を確認</strong>：AIが「ID数・初期費用（万円）を教えてください」と聞いてきます</div>
-            </li>
-          </ul>
+  <!-- フロー -->
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-head" style="background:var(--blue);">🔄 全体フロー</div>
+    <div class="card-body" style="padding:8px 10px;">
+      <div style="display:flex;align-items:center;gap:4px;font-size:9px;flex-wrap:wrap;">
+        <div style="background:var(--blue-pale);border:1px solid #90caf9;border-radius:5px;padding:6px 8px;text-align:center;">
+          <div style="font-size:8px;color:var(--blue);font-weight:700;">STEP 1</div>
+          <div style="font-weight:800;font-size:10px;">音声入力</div>
+          <div style="font-size:7.5px;color:var(--gray);">「○○支店に挨拶した」</div>
+        </div>
+        <div style="color:var(--blue);font-size:16px;">›</div>
+        <div style="background:var(--blue);border-radius:5px;padding:6px 8px;text-align:center;color:white;">
+          <div style="font-size:8px;color:#90caf9;font-weight:700;">STEP 2</div>
+          <div style="font-weight:800;font-size:10px;">AI確認画面</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.7);">要約して「送る？」</div>
+        </div>
+        <div style="color:var(--blue);font-size:16px;">›</div>
+        <div style="background:var(--blue);border-radius:5px;padding:6px 8px;text-align:center;color:white;">
+          <div style="font-size:8px;color:#90caf9;font-weight:700;">STEP 3</div>
+          <div style="font-weight:800;font-size:10px;">Slack投稿</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.7);">「はい」で自動送信</div>
+        </div>
+        <div style="color:var(--blue);font-size:16px;">›</div>
+        <div style="background:var(--green-dark);border-radius:5px;padding:6px 8px;text-align:center;color:white;">
+          <div style="font-size:8px;color:var(--green-light);font-weight:700;">STEP 4</div>
+          <div style="font-weight:800;font-size:10px;">自動転記</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.7);">小椋が自動処理</div>
+        </div>
+        <div style="color:var(--blue);font-size:16px;">›</div>
+        <div style="background:var(--green-pale);border:1px solid var(--border);border-radius:5px;padding:6px 8px;text-align:center;">
+          <div style="font-size:8px;color:var(--green-dark);font-weight:700;">STEP 5</div>
+          <div style="font-weight:800;font-size:10px;">:done1: 完了</div>
+          <div style="font-size:7.5px;color:var(--gray);">転記完了の合図</div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="card" style="margin-top:0;">
-        <div class="card-head" style="background:#b71c1c;">📋 推定実効税率の根拠</div>
-        <div class="card-body">
-          <table style="width:100%;font-size:9px;border-collapse:collapse;">
-            <thead><tr style="background:var(--green-pale);">
-              <th style="padding:3px 5px;border:1px solid var(--border);">条件</th>
-              <th style="padding:3px 5px;border:1px solid var(--border);text-align:right;">税率</th>
-            </tr></thead>
-            <tbody>
-              <tr><td style="padding:2px 5px;border:1px solid var(--border);">資本金1億超</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">36%</td></tr>
-              <tr style="background:#fafafa;"><td style="padding:2px 5px;border:1px solid var(--border);">1億以下・利益800万超</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">34%</td></tr>
-              <tr><td style="padding:2px 5px;border:1px solid var(--border);">1億以下・利益800万以下</td><td style="padding:2px 5px;border:1px solid var(--border);text-align:right;">24%</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!-- セットアップ -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:var(--blue);">1</div>
+    <div class="sec-label">事前準備（最初に1回だけ）</div>
+  </div>
 
+  <div class="card" style="margin-bottom:8px;">
+    <div class="card-head" style="background:var(--blue);">📱 セットアップ手順</div>
+    <div class="card-body">
+      <ul class="step-list">
+        <li><div class="step-dot">1</div><div class="step-content">Claude.aiアプリ（スマホ）を開く</div></li>
+        <li><div class="step-dot">2</div><div class="step-content"><strong>「【CBO】営業支援AI」プロジェクト</strong>を開く</div></li>
+        <li><div class="step-dot">3</div><div class="step-content">新規チャットを作成してチャット名を変更：<br>
+          <div class="code-block" style="margin-top:4px;font-size:9px;">【chat】銀行・行員管理</div>
+        </div></li>
+        <li><div class="step-dot">4</div><div class="step-content"><strong>「prompt_銀行行員管理_v6_final.md」</strong>の中身を最初のメッセージとして貼り付ける</div></li>
+      </ul>
       <div class="tip" style="margin-top:6px;">
-        <strong>⚠️ 警告条件：</strong><br>
-        利益率10%超 → 「役員報酬等で実態と乖離の可能性あり」<br>
-        決算残月3以下 → 「採択まで4〜6ヶ月かかるためスケジュール要確認」
+        <strong>💡 POINT:</strong> このチャットは使い回しOKです。毎回新しく作る必要はありません。
       </div>
     </div>
-
-    <div>
-      <div class="sec-title" style="margin-top: 0;">
-        <div class="sec-num">S4</div>
-        <div class="sec-label">STEP 4–5：計算 → HTML出力</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head" style="background:#b71c1c;">💰 比較する4プラン</div>
-        <div class="card-body" style="font-size: 9px;">
-          <table style="width:100%;font-size:8.5px;border-collapse:collapse;">
-            <thead><tr style="background:var(--green-pale);">
-              <th style="padding:3px 4px;border:1px solid var(--border);">プラン</th>
-              <th style="padding:3px 4px;border:1px solid var(--border);">ID数</th>
-              <th style="padding:3px 4px;border:1px solid var(--border);text-align:right;">月額</th>
-              <th style="padding:3px 4px;border:1px solid var(--border);">払い方</th>
-            </tr></thead>
-            <tbody>
-              <tr><td style="padding:2px 4px;border:1px solid var(--border);">自費</td><td style="padding:2px 4px;border:1px solid var(--border);">入力値</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">料金テーブル</td><td style="padding:2px 4px;border:1px solid var(--border);">毎月払い</td></tr>
-              <tr style="background:#fafafa;"><td style="padding:2px 4px;border:1px solid var(--border);">補助金S</td><td style="padding:2px 4px;border:1px solid var(--border);">15ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">50,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
-              <tr><td style="padding:2px 4px;border:1px solid var(--border);">補助金P</td><td style="padding:2px 4px;border:1px solid var(--border);">30ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">90,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
-              <tr style="background:#fafafa;"><td style="padding:2px 4px;border:1px solid var(--border);">補助金E</td><td style="padding:2px 4px;border:1px solid var(--border);">45ID</td><td style="padding:2px 4px;border:1px solid var(--border);text-align:right;">135,000円</td><td style="padding:2px 4px;border:1px solid var(--border);">2年一括</td></tr>
-            </tbody>
-          </table>
-          <p style="font-size:8px;color:var(--gray);margin-top:4px;">補助率2/3・月額24ヶ月分一括交付・申請代行費20万（成功報酬）</p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:0;">
-        <div class="card-head" style="background:#b71c1c;">🖥 HTMLウィジェットで出力</div>
-        <div class="card-body" style="font-size: 9px;">
-          <ul class="step-list">
-            <li><div class="step-dot">①</div><div class="step-content">TDB読み取り結果カード（会社名・売上・利益率・決算月）</div></li>
-            <li><div class="step-dot">②</div><div class="step-content">推定実効税率（根拠付き）＋利益率10%超の場合は警告表示</div></li>
-            <li><div class="step-dot">③</div><div class="step-content">支払い方法の違い（自費=毎月 / 補助金=2年一括）</div></li>
-            <li><div class="step-dot">④</div><div class="step-content"><strong>実質負担サマリーカード × 4枚</strong>（最安に「最もお得」バッジ）</div></li>
-            <li><div class="step-dot">⑤</div><div class="step-content">各プラン内訳テーブル（節税・補助金課税・代行費を明示）</div></li>
-            <li><div class="step-dot">⑥</div><div class="step-content">結論 + 決算残月警告（残3ヶ月以内）</div></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tip" style="margin-top:6px;border-left-color:#b71c1c;background:#fff5f5;">
-        <strong style="color:#b71c1c;">🔒 画面共有注意：</strong> 計算結果には仕切値・税率情報が含まれます。お客様への画面共有は行わないでください。
-      </div>
-    </div>
-  </div>
-
-  <div class="trigger-box" style="margin-top:7px;">
-    <div class="trigger-label">📋 入力例（コピペしてClaudeに貼り付け + TDB PDFを添付）</div>
-    <div class="code-block" style="font-size:8.5px;line-height:1.8;">## 補助金シミュレーション【TDB】
-（TDB PDFをここに添付）
-
-<span class="c">※ 「補助金計算して」「自費vs補助金」などの入力でも処理が始まります</span></div>
-  </div>
-</div>
-
-
-
-<!-- ══════════════════════════════════════════
-     ページ 09 ｜ 銀行・行員管理AIの使い方
-══════════════════════════════════════════ -->
-<div class="page">
-  <div class="sub-header">
-    <div class="page-num">09</div>
-    <h2>銀行・行員管理AIの使い方</h2>
-    <span class="hint">— Cowork（PC）で使用。支店接触ログ・行員情報を自動記録</span>
-  </div>
-
-  <div style="background:#1565C0;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-    💻 Cowork（Claude Desktop）専用 — スマホはSlack中継モードを使用
   </div>
 
   <!-- 2モード概要 -->
   <div class="sec-title">
-    <div class="sec-num" style="background:var(--blue);">1</div>
-    <div class="sec-label">2つのモード</div>
-    <div class="sec-sub">入力内容で自動判定・明示キーワードで強制切替</div>
-  </div>
-
-  <div class="col2" style="gap:8px;margin-bottom:10px;">
-    <div class="use-card" style="border:2px solid var(--blue);">
-      <div class="uc-head" style="background:var(--blue);">🏦 銀行モード（支店単位）</div>
-      <div class="uc-body" style="font-size:9px;line-height:1.7;">
-        <strong>対象：</strong>担当エリアの全銀行・信用金庫<br>
-        <strong>記録する情報：</strong><br>
-        ・挨拶 / 勉強会 / 個人特化（✅）<br>
-        ・予測（◎○△×）<br>
-        ・担当者名<br>
-        ・備考（personal / attack / 人員 / situation / relation）<br><br>
-        <strong>明示キーワード：</strong>「支店：」「銀行：」
-      </div>
-    </div>
-    <div class="use-card" style="border:2px solid #6A1B9A;">
-      <div class="uc-head" style="background:#6A1B9A;">👤 行員モード（個人単位）</div>
-      <div class="uc-body" style="font-size:9px;line-height:1.7;">
-        <strong>対象：</strong>高知銀行 / 百十四銀行 / 四国銀行 / 広島銀行（伊予西条・新居浜・松山のみ）<br>
-        <strong>記録する情報：</strong><br>
-        ・紹介意欲（◎○△×）<br>
-        ・直近メモ<br>
-        ・個人のpersonal<br>
-        ・接触ログ（日付・接触者・内容）<br><br>
-        <strong>明示キーワード：</strong>「行員：」
-      </div>
-    </div>
-  </div>
-
-  <!-- 処理フロー -->
-  <div class="sec-title">
     <div class="sec-num" style="background:var(--blue);">2</div>
-    <div class="sec-label">処理フロー（PCモード）</div>
+    <div class="sec-label">2つのモード</div>
+    <div class="sec-sub">入力内容で自動判定。迷ったら先頭キーワードで強制切替</div>
   </div>
 
-  <div class="card" style="margin-bottom:8px;">
-    <div class="card-head" style="background:var(--blue);">🔄 基本の流れ（音声入力 → 1行確認 → GAS送信）</div>
-    <div class="card-body" style="font-size:9px;">
-      <ul class="step-list">
-        <li><div class="step-dot">1</div><div class="step-content"><strong>音声入力</strong>：Coworkに話しかけるだけ。モードは自動判定</div></li>
-        <li><div class="step-dot">2</div><div class="step-content"><strong>1行確認</strong>：Claudeが内容を要約して「送る？」と確認。「はい」で送信</div></li>
-        <li><div class="step-dot">3</div><div class="step-content"><strong>Chrome経由でGAS送信</strong>：スプレッドシートに自動書き込み</div></li>
-        <li><div class="step-dot">4</div><div class="step-content"><strong>結果1行返却</strong>：「✅ 但馬信用金庫 本店 / row 2 更新完了」</div></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 入力例 -->
   <div class="col2" style="gap:8px;margin-bottom:8px;">
-    <div>
-      <div class="card">
-        <div class="card-head" style="background:var(--blue);">🏦 銀行モード 入力例</div>
-        <div class="card-body" style="font-size:9px;">
-          <div class="code-block" style="font-size:8px;line-height:1.8;">但馬信用金庫の本店、勉強会やった。
-予測◎、担当小椋
-
-みなと銀行の小野支店、挨拶完了。
-personalはH2年、明石市在住、地元神河町
-
-広島銀行 新居浜、勉強会と個人特化☑、
-人員3人、situationは建設業少なめ商品◎</div>
-          <div style="margin-top:6px;font-size:8.5px;color:var(--gray);">
-            <strong>備考の5項目：</strong><br>
-            personal（個人情報）/ attack（営業攻略）<br>
-            人員（支店人数）/ situation（支店状況）<br>
-            relation（人脈情報）
-          </div>
-        </div>
+    <div class="card" style="border-top:3px solid var(--blue);">
+      <div class="card-head" style="background:var(--blue);">🏦 銀行モード（支店単位）</div>
+      <div class="card-body" style="font-size:9px;line-height:1.8;">
+        <strong>使う場面：</strong>支店に挨拶・勉強会・個人特化した後<br>
+        <strong>強制切替：</strong>「支店：」「銀行：」を先頭に<br><br>
+        <strong>記録できる情報：</strong><br>
+        挨拶☑ / 勉強会☑ / 個人特化☑ / 予測（◎○△×）/ 担当者名<br><br>
+        <strong>備考の5項目：</strong><br>
+        <span style="background:#e3f2fd;padding:1px 4px;border-radius:3px;">personal</span> 個人情報（生まれ年・出身・在住）<br>
+        <span style="background:#e3f2fd;padding:1px 4px;border-radius:3px;">attack</span> 攻略ヒント・アプローチ方針<br>
+        <span style="background:#e3f2fd;padding:1px 4px;border-radius:3px;">人員</span> 支店の人数・役職構成<br>
+        <span style="background:#e3f2fd;padding:1px 4px;border-radius:3px;">situation</span> 取引先業種・商品反応<br>
+        <span style="background:#e3f2fd;padding:1px 4px;border-radius:3px;">relation</span> 他支店との関係・紹介経路
       </div>
     </div>
-    <div>
-      <div class="card">
-        <div class="card-head" style="background:#6A1B9A;">👤 行員モード 入力例</div>
-        <div class="card-body" style="font-size:9px;">
-          <div class="code-block" style="font-size:8px;line-height:1.8;">四国銀行の大西支店長に会った。
-紹介めちゃくちゃ前向きで◎
-
-百十四銀行高松支店の中村係長を
-先行登録して
-
-高知銀行の山本、安芸支店に
-異動になった</div>
-          <div style="margin-top:6px;font-size:8.5px;color:var(--gray);">
-            <strong>個人情報 → personal に自動分離：</strong><br>
-            「地元が」「趣味が」「家族が」などの<br>
-            発言は自動でpersonalフィールドへ
-          </div>
-        </div>
+    <div class="card" style="border-top:3px solid #6A1B9A;">
+      <div class="card-head" style="background:#6A1B9A;">👤 行員モード（個人単位）</div>
+      <div class="card-body" style="font-size:9px;line-height:1.8;">
+        <strong>使う場面：</strong>銀行員個人に会った・紹介を受けた後<br>
+        <strong>強制切替：</strong>「行員：」を先頭に<br><br>
+        <strong>対象銀行：</strong><br>
+        高知銀行 / 百十四銀行 / 四国銀行<br>
+        広島銀行（伊予西条・新居浜・松山のみ）<br><br>
+        <strong>記録できる情報：</strong><br>
+        紹介意欲（◎○△×）/ 直近メモ / personal<br><br>
+        <strong>紹介意欲の目安：</strong><br>
+        ◎ めちゃ前向き　○ 前向き<br>
+        △ まあまあ　　　× 消極的
       </div>
     </div>
   </div>
 
-  <!-- スマホモード -->
-  <div class="sec-title">
-    <div class="sec-num" style="background:#e65100;">3</div>
-    <div class="sec-label">スマホモード（通常のClaude.aiアプリ）</div>
-  </div>
-
-  <div class="card" style="margin-bottom:8px;">
-    <div class="card-head" style="background:#e65100;">📱 スマホからの入力 → Slack中継 → PCで処理</div>
-    <div class="card-body" style="font-size:9px;">
-      <ul class="step-list">
-        <li><div class="step-dot">1</div><div class="step-content">スマホのClaude.aiアプリで音声入力</div></li>
-        <li><div class="step-dot">2</div><div class="step-content">Claudeが確認後、<strong>#notify_sales_中国_四国エリア</strong>にSlack投稿（「📩 未処理」として記録）</div></li>
-        <li><div class="step-dot">3</div><div class="step-content">PC（Cowork）を起動すると<strong>自動で未処理を検出</strong>。「📩 未処理ログが N件 あります」と通知</div></li>
-        <li><div class="step-dot">4</div><div class="step-content">「はい」で1件ずつ確認 → GAS送信 → ✅ Done完了</div></li>
-      </ul>
-      <div style="background:#fff3e0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#e65100;border:1px solid #ffcc80;">
-        ⚠️ GAS送信はCowork（PC）でしかできません。スマホはSlack投稿までで一旦停止します。
-      </div>
-    </div>
-  </div>
-
-  <!-- 注意事項 -->
+  <!-- 転記完了確認 -->
   <div class="card">
-    <div class="card-head">⚠️ 重要な注意事項</div>
-    <div class="card-body" style="font-size:9px;">
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div>✗ 確認なしに勝手にGAS送信・Slack投稿しない</div>
-        <div>✗ 個人ネタ（personal）とビジネスメモは混ぜない</div>
-        <div>✗ 複数人・複数支店まとめて言われたら1件ずつ確認→送信</div>
-        <div>✗ DBタブは絶対に触らない</div>
-        <div>✓ モード判定で迷ったら「行員/銀行どっち？」と1行確認</div>
-        <div>✓ 銀行名は略称でOK（「但馬」→「但馬信用金庫」に自動補完）</div>
-      </div>
+    <div class="card-head" style="background:var(--green-dark);">✅ 転記完了の確認方法</div>
+    <div class="card-body" style="font-size:9.5px;">
+      <p style="margin-bottom:6px;">Slackの <strong>#notify_sales_中国_四国エリア</strong> で自分の投稿を確認してください。</p>
+      <table style="width:100%;border-collapse:collapse;font-size:9px;">
+        <tr style="background:var(--green-pale);">
+          <th style="padding:3px 8px;border:1px solid var(--border);">リアクション</th>
+          <th style="padding:3px 8px;border:1px solid var(--border);">状態</th>
+        </tr>
+        <tr><td style="padding:3px 8px;border:1px solid var(--border);">なし</td><td style="padding:3px 8px;border:1px solid var(--border);">未処理（小椋が自動処理します）</td></tr>
+        <tr style="background:#f9f9f9;"><td style="padding:3px 8px;border:1px solid var(--border);">:done1:</td><td style="padding:3px 8px;border:1px solid var(--border);">転記完了 ✅</td></tr>
+        <tr><td style="padding:3px 8px;border:1px solid var(--border);">:x:</td><td style="padding:3px 8px;border:1px solid var(--border);">失敗（小椋に連絡）</td></tr>
+      </table>
     </div>
   </div>
 </div>
 
+
 <!-- ══════════════════════════════════════════
-     ページ 8 ｜ 高知県補助金ツールの使い方
+     ページ 08 ｜ 銀行・行員管理AI — 入力例・フォーマット
 ══════════════════════════════════════════ -->
 <div class="page">
   <div class="sub-header">
     <div class="page-num">08</div>
-    <h2>高知県 補助金ツールの使い方</h2>
-    <span class="hint">— 所得向上推進企業等総合支援事業費補助金</span>
+    <h2>銀行・行員管理AI — 入力例とSlack投稿フォーマット</h2>
+    <span class="hint">— 話しかけるだけ。AIが自動で整理して確認してくれる</span>
   </div>
 
-  <div style="background:#c62828;color:white;padding:5px 12px;border-radius:4px;font-size:9px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-    🔒 INTERNAL ONLY — 社内専用ツール　画面共有時は必ず「提案書」タブに切り替えること
+  <!-- 銀行モード -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:var(--blue);">1</div>
+    <div class="sec-label">銀行モード（支店単位）の入力例</div>
   </div>
 
-  <div class="card" style="margin-bottom:8px;">
-    <div class="card-head" style="background:#c62828;">🔗 アクセス方法</div>
-    <div class="card-body" style="font-size:9.5px;">
-      <p style="margin-bottom:5px;">入力フォームトップページの「🏔 高知県 補助金ツール」ボタン、またはURLを直接開く。</p>
-      <div style="background:#f5f5f2;border-radius:5px;padding:6px 10px;font-size:9px;font-family:monospace;word-break:break-all;">
-        https://sogura-craftbank.github.io/cbo-sales-support-ai/sales-subsidy-kochi-r8-shotokukoujou.html
+  <div class="col2" style="gap:8px;margin-bottom:10px;">
+    <div class="card">
+      <div class="card-head" style="background:var(--blue);">📝 入力例（ベタ書きOK）</div>
+      <div class="card-body">
+        <div class="code-block" style="font-size:8.5px;line-height:1.9;">但馬信用金庫の日高支店、挨拶と勉強会やった。
+予測○、担当は戸川。
+S63年生まれ、豊岡市在住。
+建設業少なめだけど商品反応良かった。
+人員は課長1人、担当2人。</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head" style="background:var(--blue);">✅ AIの確認画面（1行）</div>
+      <div class="card-body">
+        <div class="code-block" style="font-size:8.5px;line-height:1.9;">🏦 但馬信用金庫 日高支店 / 挨拶☑ 勉強会☑ 予測○ / 担当：戸川
+→ 送る？（はい / 修正：〜）</div>
+        <div style="margin-top:8px;font-size:8.5px;color:var(--gray);">「修正：予測を◎に」のように返せば訂正できます</div>
       </div>
     </div>
   </div>
 
-  <!-- 5タブ概要 -->
-  <div class="sec-title">
-    <div class="sec-num">1</div>
-    <div class="sec-label">5つのタブ構成</div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:10px;">
-    <div class="use-card">
-      <div class="uc-head" style="background:var(--green-dark);">📊 試算シート</div>
-      <div class="uc-body">補助金額・自己負担を自動計算</div>
-    </div>
-    <div class="use-card">
-      <div class="uc-head" style="background:var(--green-mid);">💬 説明ポイント</div>
-      <div class="uc-body">商談中に使うトークポイント</div>
-    </div>
-    <div class="use-card">
-      <div class="uc-head" style="background:var(--blue);">📄 所得向上</div>
-      <div class="uc-body">提案書プレビュー（印刷用）</div>
-    </div>
-    <div class="use-card">
-      <div class="uc-head" style="background:var(--blue);">📄 賃金向上</div>
-      <div class="uc-body">賃金向上補助の提案書</div>
-    </div>
-    <div class="use-card">
-      <div class="uc-head" style="background:#8a6800;">📖 使い方</div>
-      <div class="uc-body">ツール内の操作ガイド</div>
-    </div>
-  </div>
-
-  <!-- STEPガイド -->
-  <div class="sec-title">
-    <div class="sec-num">2</div>
-    <div class="sec-label">操作手順（STEP 1〜4）</div>
-  </div>
-
-  <div class="col2" style="gap:8px;margin-bottom:8px;">
-    <div>
-      <div class="card" style="margin-bottom:7px;">
-        <div class="card-head" style="background:#c62828;">STEP 1 ／ 基本情報を入力</div>
-        <div class="card-body" style="font-size:9px;">
-          <ul class="step-list">
-            <li><div class="step-dot">①</div><div class="step-content"><strong>会社名</strong>：ご提案書のヘッダーとファイル名に反映</div></li>
-            <li><div class="step-dot">②</div><div class="step-content"><strong>売上規模</strong>：選ぶと仕切値テーブルが自動セット（提案書には非表示）</div></li>
-            <li><div class="step-dot">③</div><div class="step-content"><strong>ID数</strong>：利用人数を選択（10ID〜5ID刻み）</div></li>
-          </ul>
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-head" style="background:var(--blue);">📤 「はい」後のSlack投稿フォーマット</div>
+    <div class="card-body" style="padding:8px;">
+      <div class="col2" style="gap:8px;">
+        <div>
+          <div style="font-size:8.5px;font-weight:700;margin-bottom:4px;color:var(--blue);">メイン投稿：</div>
+          <div class="slack-preview" style="font-size:8.5px;">
+<span class="slack-mention">@小椋 @山田</span>
+接触ログ【支店】
+但馬信用金庫 日高支店
+挨拶：☑　勉強会：☑
+          </div>
         </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head" style="background:#c62828;">STEP 2 ／ スライダーで初期費用を調整</div>
-        <div class="card-body" style="font-size:9px;">
-          <ul class="step-list">
-            <li>
-              <div class="step-dot">①</div>
-              <div class="step-content">
-                <strong>売値の裁量調整</strong>：案件の規模に応じて±0〜300万円。<br>
-                <span style="color:var(--gray);">通常は触らずそのままでOK</span>
-              </div>
-            </li>
-            <li>
-              <div class="step-dot">②</div>
-              <div class="step-content">
-                <strong>月額差額の上乗せ</strong>：月額500円×ID数×36ヶ月分を初期費用に加算し補助対象に含める。推奨値が自動セットされます。<br>
-                <span style="color:#c0392b;font-weight:700;">⚠️ 赤いアラートが出たらスライダーを下げること</span>
-              </div>
-            </li>
-          </ul>
-          <div style="background:#fff0f0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#c0392b;border:1px solid #f5c6c6;">
-            赤いアラート = CBの実質負担が行政書士ルートを超えた状態。②を左に動かして解消してください。
+        <div>
+          <div style="font-size:8.5px;font-weight:700;margin-bottom:4px;color:var(--blue);">スレッド返信：</div>
+          <div class="slack-preview" style="font-size:8px;">
+<div class="slack-thread">
+予測：○
+担当：戸川
+備考
+┗ personal：S63年生まれ・豊岡市在住
+┗ 人員：課長1人、担当2人
+┗ situation：建設業少なめ、商品反応良好
+</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div>
-      <div class="card" style="margin-bottom:7px;">
-        <div class="card-head" style="background:#c62828;">STEP 3 ／ 比較表・グラフで確認</div>
-        <div class="card-body" style="font-size:9px;">
-          <ul class="step-list">
-            <li><div class="step-dot">📋</div><div class="step-content"><strong>上乗せ内訳表</strong>：デフォルト推奨値の計算根拠を確認</div></li>
-            <li><div class="step-dot">📊</div><div class="step-content"><strong>3パターン比較表</strong>：「補助金なし」「CB」「行政書士」の実質負担比較。<strong>CBが最安になっていることを確認してから提案へ</strong></div></li>
-            <li><div class="step-dot">📈</div><div class="step-content"><strong>5年間グラフ</strong>：緑（CB）が一番下ならOK</div></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head" style="background:#c62828;">STEP 4 ／ ご提案書を出力</div>
-        <div class="card-body" style="font-size:9px;">
-          <ul class="step-list">
-            <li><div class="step-dot">1</div><div class="step-content">試算シート一番下の<strong style="color:#c0392b;">赤いボタン「クライアント用 ご提案書 を出力する」</strong>を押す</div></li>
-            <li><div class="step-dot">2</div><div class="step-content">HTMLファイルが自動ダウンロード ＋ 別ウィンドウで提案書が開く</div></li>
-            <li><div class="step-dot">3</div><div class="step-content">別ウィンドウ右上の<strong>「📄 PDFで保存」</strong>→ 印刷ダイアログ → 送信先「PDFに保存」</div></li>
-          </ul>
-          <div style="background:#fff0f0;border-radius:5px;padding:6px 8px;margin-top:6px;font-size:8.5px;color:#c0392b;border:1px solid #f5c6c6;">
-            ⚠️ SafariはUUID名になるためPDF保存は<strong>Chromeを推奨</strong>
-          </div>
-        </div>
+      <div class="tip" style="margin-top:6px;font-size:8.5px;">
+        ⚠️ 担当・予測・備考はスレッドのみ。メイン投稿には入れない。内容のない備考項目は省略。
       </div>
     </div>
   </div>
 
-  <!-- FAQ -->
+  <!-- 行員モード -->
+  <div class="sec-title">
+    <div class="sec-num" style="background:#6A1B9A;">2</div>
+    <div class="sec-label">行員モード（個人単位）の入力例</div>
+  </div>
+
+  <div class="col2" style="gap:8px;margin-bottom:10px;">
+    <div class="card">
+      <div class="card-head" style="background:#6A1B9A;">📝 入力例（ベタ書きOK）</div>
+      <div class="card-body">
+        <div class="code-block" style="font-size:8.5px;line-height:1.9;">四国銀行のよさこい咲都支店、原さんに会った。
+書類仕事多くて忙しそうだったけど
+話は聞いてくれた。紹介意欲は△。
+次回また顔出す。</div>
+        <div style="margin-top:6px;font-size:8.5px;color:var(--gray);">行員名は苗字だけでOK。同姓が複数いる場合は番号で選択。</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head" style="background:#6A1B9A;">✅ AIの確認画面（1行）</div>
+      <div class="card-body">
+        <div class="code-block" style="font-size:8.5px;line-height:1.9;">👤 四国銀行 よさこい咲都支店 / 原 沙英 / △ / 書類仕事多く忙しそう、次回顔出し予定
+→ 送る？（はい / 修正：〜）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:10px;">
+    <div class="card-head" style="background:#6A1B9A;">📤 「はい」後のSlack投稿フォーマット</div>
+    <div class="card-body" style="padding:8px;">
+      <div class="col2" style="gap:8px;">
+        <div>
+          <div style="font-size:8.5px;font-weight:700;margin-bottom:4px;color:#6A1B9A;">メイン投稿：</div>
+          <div class="slack-preview" style="font-size:8.5px;">
+<span class="slack-mention">@小椋 @森田 @川村 @岡田</span>
+接触ログ【行員】
+四国銀行 よさこい咲都支店
+原 沙英
+          </div>
+        </div>
+        <div>
+          <div style="font-size:8.5px;font-weight:700;margin-bottom:4px;color:#6A1B9A;">スレッド返信：</div>
+          <div class="slack-preview" style="font-size:8px;">
+<div class="slack-thread">
+最終接触日：2026/05/26
+最終接触者：○○
+紹介意欲：△
+直近メモ：書類仕事が多く忙しそうだが話は聞いてくれた。次回また顔出し予定。
+ログ：2026/05/26 書類仕事多く忙しそう。次回顔出し予定。
+</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:6px;font-size:8.5px;">
+        ⚠️ personalがある場合のみ「直近メモ」の前に追加。ログは今回分のみ記載（GASが既存ログに自動追記）。
+      </div>
+    </div>
+  </div>
+
+  <!-- コツ・注意事項 -->
   <div class="sec-title">
     <div class="sec-num">3</div>
-    <div class="sec-label">よくある質問</div>
+    <div class="sec-label">入力のコツ ／ 注意事項</div>
   </div>
 
-  <div class="card">
-    <div class="card-head" style="background:#c62828;">❓ FAQ</div>
-    <div class="card-body" style="font-size:9px;">
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div>
-          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 所得向上・賃金向上タブのPDFが見られない</div>
-          <div style="color:var(--gray);">A. 「PDFを開く」ボタンを押すと高知県公式サイトのPDFが別タブで開きます。インターネット接続が必要です。</div>
-        </div>
-        <div style="border-top:1px solid var(--border);padding-top:8px;">
-          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 月額差額が「38ヶ月」など変な数字になる</div>
-          <div style="color:var(--gray);">A. 10万刻みに丸めているため端数が出ます。「月額差額（3年 36ヶ月分）」の金額が正しい基準です。</div>
-        </div>
-        <div style="border-top:1px solid var(--border);padding-top:8px;">
-          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 売値・仕切値はご提案書に出る？</div>
-          <div style="color:var(--gray);">A. 出ません。試算シート（内部画面）にのみ表示されます。</div>
-        </div>
-        <div style="border-top:1px solid var(--border);padding-top:8px;">
-          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 申請締切はいつ？</div>
-          <div style="color:var(--gray);">A. 1次募集：<strong>令和8年5月20日（水）17:00必着</strong>。事務局TEL: 088-823-9049</div>
-        </div>
-        <div style="border-top:1px solid var(--border);padding-top:8px;">
-          <div style="font-weight:700;color:var(--green-dark);margin-bottom:2px;">Q. 申請サポート費用は？</div>
-          <div style="color:var(--gray);">A. クラフトバンクは<strong>無料で対応</strong>（通常は補助金の20%）。所得向上補助金採択時点で契約。賃金向上は別途費用が発生します。</div>
-        </div>
+  <div class="col2" style="gap:8px;">
+    <div class="card">
+      <div class="card-head">💡 入力のコツ</div>
+      <div class="card-body" style="font-size:9px;line-height:1.8;">
+        <strong>銀行名・支店名は省略OK</strong><br>
+        「但馬」→「但馬信用金庫」/ 「日高」→「日高支店」に自動補完<br><br>
+        <strong>話し言葉でOK</strong><br>
+        AIが自動でpersonal / attack / 人員 / situation / relationに振り分け<br><br>
+        <strong>迷ったらキーワードで強制切替</strong><br>
+        「行員：○○支店の○○さんに会った」<br>
+        「支店：○○銀行○○支店、勉強会した」<br><br>
+        <strong>複数まとめて入力可</strong><br>
+        「○○と○○に会った」→ 1件ずつ確認して送信
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">⚠️ 重要な注意事項</div>
+      <div class="card-body" style="font-size:9px;line-height:1.8;">
+        ✗ 確認なしに勝手にSlack投稿しない<br>
+        ✗ 個人ネタ（personal）とビジネスメモは混ぜない<br>
+        ✗ 対象外の銀行（銀行モード以外の行員個人情報）は入力しない<br>
+        ✗ 送信後の取り消しは手動でSlack投稿を削除<br><br>
+        <strong>銀行名補完テーブル（主要）：</strong><br>
+        但馬→但馬信用金庫 / みなと→みなと銀行<br>
+        中国→中国銀行 / トマト→トマト銀行<br>
+        山陰合同→山陰合同銀行 / 広島→広島銀行<br>
+        高知→高知銀行 / 百十四→百十四銀行<br>
+        四国→四国銀行 / しまね→しまね信用金庫<br>
+        関西みらい→関西みらい銀行
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>
