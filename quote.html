@@ -154,28 +154,29 @@ table.qt td{padding:6px 10px;border:1px solid #ccc;font-size:12px;vertical-align
   .app{padding:0!important;margin:0!important;max-width:none!important}
 
   /* ===== A4 1枚に収めるためのコンパクト化（印刷時のみ） ===== */
-  .quote{border:none!important;box-shadow:none!important;padding:0!important;max-width:none!important;width:100%!important;font-size:11px!important;line-height:1.5!important}
-  .quote-title{font-size:18px!important;letter-spacing:6px!important;padding-bottom:7px!important;margin-bottom:12px!important}
-  .quote-meta{margin-bottom:10px!important}
-  .quote-from{font-size:10px!important;line-height:1.6!important}
-  .quote-from img{height:17px!important;margin-bottom:4px!important}
-  .quote-dates{font-size:10px!important;margin-bottom:8px!important}
+  .quote{border:none!important;box-shadow:none!important;padding:0!important;max-width:none!important;width:100%!important;font-size:11px!important;line-height:1.38!important}
+  .quote-title{font-size:17px!important;letter-spacing:5px!important;padding-bottom:6px!important;margin-bottom:9px!important}
+  .quote-meta{margin-bottom:7px!important}
+  .quote-from{font-size:10px!important;line-height:1.45!important}
+  .quote-from img{height:16px!important;margin-bottom:3px!important}
+  .quote-dates{font-size:10px!important;line-height:1.4!important;margin-bottom:6px!important}
+  .quote-subject{margin-bottom:3px!important}
   .quote-subject,.quote-intro{font-size:11px!important}
-  .quote-intro{margin-bottom:10px!important}
-  .sec-ttl{font-size:11px!important;padding:4px 10px!important}
-  table.qt th{padding:4px 8px!important;font-size:10px!important}
-  table.qt td{padding:4px 8px!important;font-size:11px!important}
-  .sub-block{margin-bottom:12px!important}
-  .sub-lbl,.sub-val{padding:3px 8px!important;font-size:10px!important}
-  .grand-box{margin-bottom:12px!important}
-  .gr-lbl,.gr-val{padding:5px 10px!important}
+  .quote-intro{margin-bottom:7px!important}
+  .sec-ttl{font-size:11px!important;padding:3px 10px!important}
+  table.qt th{padding:3px 8px!important;font-size:10px!important}
+  table.qt td{padding:3px 8px!important;font-size:11px!important}
+  .sub-block{margin-bottom:8px!important}
+  .sub-lbl,.sub-val{padding:2px 8px!important;font-size:10px!important}
+  .grand-box{margin-bottom:8px!important}
+  .gr-lbl,.gr-val{padding:4px 10px!important}
   .gr:last-child .gr-lbl,.gr:last-child .gr-val{font-size:13px!important}
-  .remarks{padding:9px 12px!important;font-size:10px!important;line-height:1.6!important;margin-bottom:8px!important}
-  .remarks h4{margin-bottom:3px!important}
-  .validity{font-size:10px!important;margin-top:6px!important}
+  .remarks{padding:7px 11px!important;font-size:10px!important;line-height:1.4!important;margin-bottom:5px!important}
+  .remarks h4{margin-bottom:2px!important}
+  .validity{font-size:10px!important;margin-top:4px!important}
 
-  /* セクション途中での改ページを防ぐ */
-  .quote-meta,table.qt,.sub-block,.grand-box,.remarks{page-break-inside:avoid}
+  /* テーブルと合計だけ途中改ページを禁止（備考にはavoidをかけない＝2ページ目に飛ぶのを防ぐ） */
+  table.qt,.sub-block,.grand-box{page-break-inside:avoid}
 }
 </style>
 </head>
